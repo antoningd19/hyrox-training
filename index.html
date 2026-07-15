@@ -63,7 +63,8 @@
     font-family:var(--font-body);
     font-weight:500;
     line-height:1.5;
-    padding-bottom:56px;
+    padding-top:env(safe-area-inset-top);
+    padding-bottom:calc(56px + env(safe-area-inset-bottom));
     word-wrap:break-word;
   }
   h1,h2,h3{margin:0; text-wrap:balance;}
@@ -73,7 +74,7 @@
   .wrap{max-width:640px; margin:0 auto; padding:0 16px;}
 
   /* ---------- Nav ---------- */
-  .nav-shell{position:sticky; top:10px; z-index:20; padding:10px 12px 0;}
+  .nav-shell{position:sticky; top:calc(10px + env(safe-area-inset-top)); z-index:20; padding:10px 12px 0;}
   nav.pill{
     max-width:640px; margin:0 auto;
     display:flex; align-items:center; justify-content:space-between; gap:10px;
