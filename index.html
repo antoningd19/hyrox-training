@@ -45,6 +45,7 @@
     --red-tint:rgba(200,30,60,0.09);
     --on-red:#F7E4E2;
     --on-red-soft:rgba(247,228,226,0.72);
+    --green:#3F8F5F;
     --radius-lg:26px;
     --radius-md:18px;
     --font-display:'Fraunces', Georgia, serif;
@@ -216,8 +217,16 @@
   .day.rest .day-head{cursor:default;}
   .day.rest .day-title{color:var(--ink-soft); font-style:italic; font-weight:500;}
   .day.done .day-title{color:var(--ink-soft); text-decoration:line-through;}
-  .state-dot{width:9px; height:9px; border-radius:50%; border:1.5px solid var(--ink-soft); flex:0 0 auto;}
-  .day.done .state-dot{background:var(--red); border-color:var(--red);}
+  .state-dot{
+    width:20px; height:20px; border-radius:50%; border:1.5px solid var(--ink-soft); flex:0 0 auto;
+    display:flex; align-items:center; justify-content:center;
+    transition:background-color .15s ease, border-color .15s ease;
+  }
+  .state-dot::after{
+    content:"✓"; font-size:12px; line-height:1; font-weight:700; color:transparent;
+  }
+  .day.done .state-dot{background:var(--green); border-color:var(--green);}
+  .day.done .state-dot::after{color:#fff;}
   .chevron{font-family:var(--font-mono); font-size:13px; color:var(--ink-soft); transition:transform .2s ease; flex:0 0 auto;}
   .day.open .chevron{transform:rotate(90deg); color:var(--red);}
   .day.rest .chevron{visibility:hidden;}
