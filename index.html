@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<title>Hyrox Bordeaux — 3 oct 2026</title>
+<meta name="description" content="Suivi de prépa Hyrox Bordeaux, compte à rebours et checklist de séances.">
+
+<!-- Installable sur écran d'accueil iPhone -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hyrox BDX">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='36' fill='%230b0b0d'/%3E%3Ctext x='90' y='112' font-family='Arial Black,Arial,sans-serif' font-size='90' font-weight='900' fill='%23ff4b1f' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0b0d'/%3E%3Ctext x='16' y='23' font-family='Arial Black,Arial,sans-serif' font-size='18' font-weight='900' fill='%23ff4b1f' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-card:#141418;
+    --bg-card-2:#1b1b21;
+    --border:#2a2a31;
+    --text:#f2f2f4;
+    --text-dim:#9a9aa4;
+    --accent:#ff4b1f;
+    --accent-2:#ffb703;
+    --ok:#3ddc84;
+    --radius:16px;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0; padding:0; overflow-x:hidden; max-width:100%;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.45;
+    padding-bottom:48px;
+    word-wrap:break-word;
+  }
+  a{color:var(--accent-2);}
+
+  header.hero{
+    padding:28px 20px 22px;
+    background:
+      radial-gradient(circle at 15% 0%, rgba(255,75,31,0.35), transparent 55%),
+      radial-gradient(circle at 100% 20%, rgba(255,183,3,0.18), transparent 45%),
+      var(--bg);
+    border-bottom:1px solid var(--border);
+  }
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:11px;
+    color:var(--accent-2);
+    font-weight:700;
+  }
+  h1{
+    margin:6px 0 2px;
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:-0.02em;
+  }
+  .sub{color:var(--text-dim); font-size:14px; margin:0;}
+
+  nav.tabs{
+    position:sticky; top:0; z-index:10;
+    display:flex; gap:6px; overflow-x:auto;
+    padding:10px 14px;
+    background:rgba(11,11,13,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+    scrollbar-width:none;
+  }
+  nav.tabs::-webkit-scrollbar{display:none;}
+  nav.tabs a{
+    flex:0 0 auto;
+    padding:7px 12px;
+    border-radius:999px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    color:var(--text-dim);
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+    white-space:nowrap;
+  }
+  nav.tabs a:active{background:var(--accent); color:#1a0a05; border-color:var(--accent);}
+
+  main{padding:18px 16px 8px; max-width:640px; margin:0 auto;}
+  section{margin-bottom:30px; scroll-margin-top:64px;}
+  h2{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    color:var(--text-dim);
+    margin:0 0 12px;
+    font-weight:700;
+  }
+
+  .card{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:16px;
+  }
+  .card + .card{margin-top:10px;}
+
+  /* Countdown */
+  .countdown{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    text-align:center;
+  }
+  .countdown .unit{
+    background:var(--bg-card-2);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:12px 4px;
+  }
+  .countdown .num{
+    font-size:26px;
+    font-weight:900;
+    font-variant-numeric:tabular-nums;
+    color:var(--accent);
+  }
+  .countdown .lbl{font-size:10px; text-transform:uppercase; color:var(--text-dim); letter-spacing:.08em;}
+  .race-meta{margin-top:12px; font-size:13px; color:var(--text-dim); text-align:center;}
+  .race-meta b{color:var(--text);}
+
+  /* Stat grid */
+  .stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+  .stat{
+    background:var(--bg-card); border:1px solid var(--border);
+    border-radius:var(--radius); padding:14px;
+  }
+  .stat .v{font-size:20px; font-weight:800;}
+  .stat .k{font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.06em;}
+
+  /* Blocks / progress */
+  .block{
+    display:flex; align-items:flex-start; gap:12px;
+    padding:12px 0; border-bottom:1px solid var(--border);
+  }
+  .block:last-child{border-bottom:none;}
+  .block .dot{
+    width:10px; height:10px; border-radius:50%;
+    background:var(--border); margin-top:5px; flex:0 0 auto;
+  }
+  .block.done .dot{background:var(--ok);}
+  .block.active .dot{background:var(--accent); box-shadow:0 0 0 4px rgba(255,75,31,0.25);}
+  .block .title{font-weight:700; font-size:14px;}
+  .block .dates{font-size:12px; color:var(--text-dim);}
+  .block .desc{font-size:13px; color:var(--text-dim); margin-top:2px;}
+  .badge{
+    display:inline-block; font-size:10px; font-weight:800; text-transform:uppercase;
+    letter-spacing:.06em; padding:2px 7px; border-radius:999px; margin-left:6px;
+    background:rgba(255,75,31,0.18); color:var(--accent-2); vertical-align:middle;
+  }
+
+  /* Weekly tracker */
+  .week-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+  .week-head .range{font-size:12px; color:var(--text-dim);}
+  .day-row{
+    display:flex; align-items:center; gap:12px;
+    padding:12px 4px; border-bottom:1px solid var(--border);
+  }
+  .day-row:last-child{border-bottom:none;}
+  .day-row input[type=checkbox]{
+    appearance:none; -webkit-appearance:none;
+    width:26px; height:26px; flex:0 0 auto;
+    border-radius:8px; border:2px solid var(--border);
+    background:var(--bg-card-2);
+    position:relative; cursor:pointer;
+  }
+  .day-row input[type=checkbox]:checked{
+    background:var(--ok); border-color:var(--ok);
+  }
+  .day-row input[type=checkbox]:checked::after{
+    content:"✓"; position:absolute; inset:0; display:flex;
+    align-items:center; justify-content:center; color:#06210f; font-weight:900; font-size:15px;
+  }
+  .day-row .day-info{flex:1; min-width:0;}
+  .day-row .day-name{font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--accent-2); font-weight:800;}
+  .day-row .day-desc{font-size:14px; font-weight:600;}
+  .day-row.checked .day-desc{color:var(--text-dim); text-decoration:line-through;}
+  .day-row.rest .day-desc{color:var(--text-dim); font-style:italic;}
+
+  .progress-bar{
+    height:8px; border-radius:999px; background:var(--bg-card-2);
+    border:1px solid var(--border); overflow:hidden; margin:12px 0 4px;
+  }
+  .progress-bar .fill{
+    height:100%; background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    width:0%; transition:width .3s ease;
+  }
+  .progress-txt{font-size:12px; color:var(--text-dim); text-align:right;}
+
+  button.reset{
+    display:block; margin:14px auto 0;
+    background:none; border:1px solid var(--border); color:var(--text-dim);
+    font-size:12px; padding:7px 14px; border-radius:999px; cursor:pointer;
+  }
+  button.reset:active{border-color:var(--accent); color:var(--accent);}
+
+  /* Standards table */
+  .table-wrap{width:100%; overflow-x:auto;}
+  table{width:100%; border-collapse:collapse; font-size:13px;}
+  th, td{padding:9px 6px; text-align:left; border-bottom:1px solid var(--border);}
+  th{color:var(--text-dim); font-size:10px; text-transform:uppercase; letter-spacing:.06em; font-weight:700;}
+  td.num{color:var(--text-dim); width:18px;}
+  td.target{color:var(--accent-2); font-weight:700; text-align:right; white-space:nowrap;}
+
+  /* Strategy list */
+  ol.strategy{margin:0; padding-left:20px; font-size:14px;}
+  ol.strategy li{margin-bottom:8px;}
+
+  footer{text-align:center; color:var(--text-dim); font-size:11px; padding:20px 16px 0;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow">Open Solo · Bordeaux</div>
+  <h1>Hyrox Bordeaux</h1>
+  <p class="sub">Samedi 3 octobre 2026 — objectif ~1h05, plancher sub-1h10</p>
+</header>
+
+<nav class="tabs">
+  <a href="#compte-a-rebours">Compte à rebours</a>
+  <a href="#suivi">Suivi séances</a>
+  <a href="#programme">Programme</a>
+  <a href="#standards">Standards</a>
+  <a href="#strategie">Stratégie</a>
+  <a href="#profil">Profil</a>
+</nav>
+
+<main>
+
+  <section id="compte-a-rebours">
+    <h2>Compte à rebours</h2>
+    <div class="card">
+      <div class="countdown">
+        <div class="unit"><div class="num" id="cd-days">--</div><div class="lbl">jours</div></div>
+        <div class="unit"><div class="num" id="cd-hours">--</div><div class="lbl">heures</div></div>
+        <div class="unit"><div class="num" id="cd-mins">--</div><div class="lbl">min</div></div>
+        <div class="unit"><div class="num" id="cd-secs">--</div><div class="lbl">sec</div></div>
+      </div>
+      <p class="race-meta">Départ estimé <b>08:00</b> · <b id="race-week-info">—</b></p>
+    </div>
+  </section>
+
+  <section id="suivi">
+    <h2>Suivi de séances — cette semaine</h2>
+    <div class="card">
+      <div class="week-head">
+        <strong id="week-label">Semaine</strong>
+        <span class="range" id="week-range">—</span>
+      </div>
+      <div id="week-list"></div>
+      <div class="progress-bar"><div class="fill" id="week-fill"></div></div>
+      <div class="progress-txt" id="week-progress-txt">0/6 séances</div>
+      <button class="reset" id="reset-week">Réinitialiser la semaine</button>
+    </div>
+  </section>
+
+  <section id="programme">
+    <h2>Programme — 4 blocs (~11 semaines)</h2>
+    <div class="card" id="blocks"></div>
+
+    <h2 style="margin-top:22px;">Semaine type</h2>
+    <div class="card">
+      <div class="table-wrap">
+      <table>
+        <tr><td class="num">Lun</td><td>Course — Qualité (VMA / intervalles), jambes fraîches</td></tr>
+        <tr><td class="num">Mar</td><td>Muscu — Haut + push/pull stations (SkiErg, wall ball, tirage, gainage)</td></tr>
+        <tr><td class="num">Mer</td><td>Course — Endurance fondamentale (footing Z2)</td></tr>
+        <tr><td class="num">Jeu</td><td>Muscu — Bas du corps + sled / carry (squat, sled, farmers, lunges)</td></tr>
+        <tr><td class="num">Ven</td><td>Course — Seuil / tempo (allure spécifique Hyrox)</td></tr>
+        <tr><td class="num">Sam</td><td>Mixte — Circuit Hyrox compromised (stations + course, transitions)</td></tr>
+        <tr><td class="num">Dim</td><td>Repos</td></tr>
+      </table>
+      </div>
+      <p class="race-meta" style="text-align:left; margin-top:10px;">
+        Allures repères : Endurance Z2 5'30–6'00 · Seuil 4'30–4'45 · VMA 4'00–4'15 · Allure Hyrox ~5'00/km.
+      </p>
+    </div>
+  </section>
+
+  <section id="standards">
+    <h2>Standards visés (Open Homme) — 1 km avant chaque station</h2>
+    <div class="card">
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Station</th><th>Cible</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td>SkiErg</td><td class="target">1000 m</td></tr>
+          <tr><td class="num">2</td><td>Sled Push</td><td class="target">50 m · ~152 kg</td></tr>
+          <tr><td class="num">3</td><td>Sled Pull</td><td class="target">50 m · ~103 kg</td></tr>
+          <tr><td class="num">4</td><td>Burpee Broad Jumps</td><td class="target">80 m</td></tr>
+          <tr><td class="num">5</td><td>Rameur</td><td class="target">1000 m</td></tr>
+          <tr><td class="num">6</td><td>Farmers Carry</td><td class="target">200 m · 2×24 kg</td></tr>
+          <tr><td class="num">7</td><td>Sandbag Lunges</td><td class="target">100 m · 20 kg</td></tr>
+          <tr><td class="num">8</td><td>Wall Balls</td><td class="target">100 reps · 6 kg @ 3 m</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="race-meta" style="text-align:left; margin-top:10px;">
+        Repères de temps : course 8 km ≈ 40 min · 8 stations ≈ 24–27 min · roxzone ≈ 2–3 min.
+      </p>
+    </div>
+  </section>
+
+  <section id="strategie">
+    <h2>Stratégie jour J</h2>
+    <div class="card">
+      <ol class="strategy">
+        <li>Partir contrôlé : ~5'05 au 1er km, ne pas se griller.</li>
+        <li>Wall balls en séries planifiées (ex. 10×10), jamais à l'échec.</li>
+        <li>Sled push en position basse, petits pas réguliers, ne jamais s'arrêter.</li>
+        <li>Roxzone rapide : transitions préparées, pas de temps mort.</li>
+        <li>Nutrition : petit-déj 2–3 h avant le départ, gel possible pendant la course.</li>
+        <li>Garder du jus pour les 2 derniers km et les wall balls finaux.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="profil">
+    <h2>Profil & priorités</h2>
+    <div class="stat-grid">
+      <div class="stat"><div class="v">5'00/km</div><div class="k">12 km facile</div></div>
+      <div class="stat"><div class="v">&gt;125 kg</div><div class="k">Squat (&gt;1,5× PDC)</div></div>
+      <div class="stat"><div class="v">4'30–4'45</div><div class="k">Allure seuil</div></div>
+      <div class="stat"><div class="v">4'00–4'15</div><div class="k">Allure VMA</div></div>
+    </div>
+    <div class="card" style="margin-top:10px;">
+      <p style="margin:0 0 8px;">Ex-gymnaste niveau national (gainage, explosivité, force relative), 1m83 / 83 kg, athlétique. Débutant total sur les mouvements/machines Hyrox.</p>
+      <p style="margin:0;"><b>Priorités :</b> (1) technique des stations — gros gains gratuits en partant de zéro ; (2) compromised running &amp; pacing. Force et course pures déjà acquises.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>Hyrox Bordeaux · 3 oct 2026 · mis à jour depuis le téléphone</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Compte à rebours ---------- */
+  var RACE_DATE = new Date(2026, 9, 3, 8, 0, 0); // 3 octobre 2026, 08:00 (heure locale)
+
+  function pad(n){ return String(n).padStart(2,"0"); }
+
+  function tickCountdown(){
+    var now = new Date();
+    var diff = RACE_DATE - now;
+    if (diff < 0) diff = 0;
+    var days = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    var mins  = Math.floor((diff % 3600000) / 60000);
+    var secs  = Math.floor((diff % 60000) / 1000);
+    document.getElementById("cd-days").textContent = days;
+    document.getElementById("cd-hours").textContent = pad(hours);
+    document.getElementById("cd-mins").textContent  = pad(mins);
+    document.getElementById("cd-secs").textContent  = pad(secs);
+  }
+  tickCountdown();
+  setInterval(tickCountdown, 1000);
+
+  /* ---------- Blocs de programme ---------- */
+  var BLOCKS = [
+    { name:"Bloc 1 — Fondations & Technique", start:new Date(2026,6,14), end:new Date(2026,7,3),
+      desc:"Gestuelle propre de chaque station (priorité absolue) + base aérobie." },
+    { name:"Bloc 2 — Développement", start:new Date(2026,7,4), end:new Date(2026,7,31),
+      desc:"Volume + seuil, force spécifique (sled ≥152 kg, volume wall balls), demi-simulations le samedi." },
+    { name:"Bloc 3 — Spécifique & Simulations", start:new Date(2026,8,1), end:new Date(2026,8,21),
+      desc:"Format spécifique, pacing, simulation complète chronométrée (S9), travail de la roxzone." },
+    { name:"Bloc 4 — Affûtage & Jour J", start:new Date(2026,8,22), end:new Date(2026,9,3),
+      desc:"Réduction du volume, intensité courte maintenue, course le 3 oct." }
+  ];
+
+  function fmtDate(d){
+    return d.toLocaleDateString("fr-FR", { day:"numeric", month:"short" });
+  }
+
+  function renderBlocks(){
+    var now = new Date();
+    var container = document.getElementById("blocks");
+    var raceInfo = "Hors période de prépa";
+    container.innerHTML = "";
+    BLOCKS.forEach(function(b){
+      var state = "";
+      if (now > b.end) state = "done";
+      else if (now >= b.start && now <= b.end) { state = "active"; raceInfo = b.name.replace(/^Bloc \d+ — /,""); }
+      var el = document.createElement("div");
+      el.className = "block " + state;
+      el.innerHTML =
+        '<div class="dot"></div>' +
+        '<div>' +
+          '<div class="title">' + b.name + (state==="active" ? '<span class="badge">En cours</span>' : '') + '</div>' +
+          '<div class="dates">' + fmtDate(b.start) + ' → ' + fmtDate(b.end) + '</div>' +
+          '<div class="desc">' + b.desc + '</div>' +
+        '</div>';
+      container.appendChild(el);
+    });
+    document.getElementById("race-week-info").textContent = raceInfo;
+  }
+  renderBlocks();
+
+  /* ---------- Suivi de séances (checklist hebdo persistée) ---------- */
+  var WEEK_TEMPLATE = [
+    { key:"lun", name:"Lun", desc:"Course — Qualité (VMA / intervalles)" },
+    { key:"mar", name:"Mar", desc:"Muscu — Haut + push/pull stations" },
+    { key:"mer", name:"Mer", desc:"Course — Endurance fondamentale (Z2)" },
+    { key:"jeu", name:"Jeu", desc:"Muscu — Bas du corps + sled / carry" },
+    { key:"ven", name:"Ven", desc:"Course — Seuil / tempo" },
+    { key:"sam", name:"Sam", desc:"Mixte — Circuit Hyrox compromised" },
+    { key:"dim", name:"Dim", desc:"Repos", rest:true }
+  ];
+
+  function isoDate(d){
+    var x = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    return x.getFullYear() + "-" + pad(x.getMonth()+1) + "-" + pad(x.getDate());
+  }
+
+  function mondayOf(d){
+    var day = d.getDay(); // 0 = dimanche
+    var diffToMonday = (day === 0) ? -6 : (1 - day);
+    var monday = new Date(d.getFullYear(), d.getMonth(), d.getDate() + diffToMonday);
+    return monday;
+  }
+
+  function weekStorageKey(monday){
+    return "hyrox-week-" + isoDate(monday);
+  }
+
+  function loadWeekState(key){
+    try{
+      var raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : {};
+    }catch(e){ return {}; }
+  }
+
+  function saveWeekState(key, state){
+    try{ localStorage.setItem(key, JSON.stringify(state)); }catch(e){}
+  }
+
+  function renderWeek(){
+    var monday = mondayOf(new Date());
+    var sunday = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate()+6);
+    var key = weekStorageKey(monday);
+    var state = loadWeekState(key);
+
+    document.getElementById("week-range").textContent = fmtDate(monday) + " – " + fmtDate(sunday);
+
+    var listEl = document.getElementById("week-list");
+    listEl.innerHTML = "";
+
+    WEEK_TEMPLATE.forEach(function(day){
+      var row = document.createElement("label");
+      row.className = "day-row" + (day.rest ? " rest" : "") + (state[day.key] ? " checked" : "");
+
+      var checkable = !day.rest;
+      var checkHtml = checkable
+        ? '<input type="checkbox" data-day="' + day.key + '" ' + (state[day.key] ? "checked" : "") + '>'
+        : '<input type="checkbox" disabled>';
+
+      row.innerHTML =
+        checkHtml +
+        '<div class="day-info">' +
+          '<div class="day-name">' + day.name + '</div>' +
+          '<div class="day-desc">' + day.desc + '</div>' +
+        '</div>';
+      listEl.appendChild(row);
+    });
+
+    listEl.querySelectorAll('input[type=checkbox]:not([disabled])').forEach(function(box){
+      box.addEventListener("change", function(){
+        var s = loadWeekState(key);
+        s[box.dataset.day] = box.checked;
+        saveWeekState(key, s);
+        box.closest(".day-row").classList.toggle("checked", box.checked);
+        updateProgress(key);
+      });
+    });
+
+    updateProgress(key);
+    document.getElementById("week-label").textContent =
+      "Semaine du " + fmtDate(monday);
+  }
+
+  function updateProgress(key){
+    var state = loadWeekState(key);
+    var trainable = WEEK_TEMPLATE.filter(function(d){ return !d.rest; });
+    var done = trainable.filter(function(d){ return state[d.key]; }).length;
+    var total = trainable.length;
+    var pct = Math.round((done/total) * 100);
+    document.getElementById("week-fill").style.width = pct + "%";
+    document.getElementById("week-progress-txt").textContent = done + "/" + total + " séances";
+  }
+
+  document.getElementById("reset-week").addEventListener("click", function(){
+    var monday = mondayOf(new Date());
+    var key = weekStorageKey(monday);
+    saveWeekState(key, {});
+    renderWeek();
+  });
+
+  renderWeek();
+
+})();
+</script>
+
+</body>
+</html>
