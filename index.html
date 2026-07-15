@@ -7,7 +7,7 @@
 <meta name="description" content="Suivi de prépa Hyrox Bordeaux : programme, séances détaillées et compte à rebours.">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Hyrox BDX">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#F3EEE4">
@@ -63,7 +63,6 @@
     font-family:var(--font-body);
     font-weight:500;
     line-height:1.5;
-    padding-top:env(safe-area-inset-top);
     padding-bottom:calc(56px + env(safe-area-inset-bottom));
     word-wrap:break-word;
   }
@@ -74,7 +73,7 @@
   .wrap{max-width:640px; margin:0 auto; padding:0 16px;}
 
   /* ---------- Nav ---------- */
-  .nav-shell{position:sticky; top:calc(10px + env(safe-area-inset-top)); z-index:20; padding:10px 12px 0;}
+  .nav-shell{position:sticky; top:10px; z-index:20; padding:10px 12px 0;}
   nav.pill{
     max-width:640px; margin:0 auto;
     display:flex; align-items:center; justify-content:space-between; gap:10px;
