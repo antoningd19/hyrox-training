@@ -100,12 +100,12 @@
     transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease;
   }
   .btn-brk .brk{color:var(--red); transition:color .18s ease;}
-  .btn-brk:hover{
+  .btn-brk:hover, .btn-brk.touch-hover{
     transform:translateY(-2px);
     background:var(--ink); color:var(--cream);
     box-shadow:0 6px 14px rgba(28,23,18,0.16);
   }
-  .btn-brk:hover .brk{color:var(--red-bright);}
+  .btn-brk:hover .brk, .btn-brk.touch-hover .brk{color:var(--red-bright);}
   .btn-brk:active{transform:translateY(0); box-shadow:0 2px 4px rgba(28,23,18,0.12);}
 
   .tabs{
@@ -120,7 +120,7 @@
     padding:7px 12px; white-space:nowrap;
     transition:background-color .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
   }
-  .tabs a:hover{background:var(--ink); color:var(--cream); border-color:var(--ink); transform:translateY(-1px);}
+  .tabs a:hover, .tabs a.touch-hover{background:var(--ink); color:var(--cream); border-color:var(--ink); transform:translateY(-1px);}
   .tabs a:active{background:var(--ink); color:var(--cream); border-color:var(--ink);}
 
   main{padding-top:18px;}
@@ -189,13 +189,13 @@
     padding:14px; position:relative;
     transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
-  .block-card:hover{
+  .block-card:hover, .block-card.touch-hover{
     transform:translateY(-4px);
     box-shadow:0 10px 22px rgba(28,23,18,0.10);
     border-color:var(--red);
   }
   .block-card.active{border-color:var(--red); box-shadow:0 0 0 1px var(--red);}
-  .block-card.active:hover{box-shadow:0 10px 22px rgba(28,23,18,0.10), 0 0 0 1px var(--red);}
+  .block-card.active:hover, .block-card.active.touch-hover{box-shadow:0 10px 22px rgba(28,23,18,0.10), 0 0 0 1px var(--red);}
   .block-num{
     position:absolute; top:12px; right:16px; font-family:var(--font-mono); font-size:11px;
     color:var(--ink-soft);
@@ -206,7 +206,7 @@
     display:flex; align-items:center; justify-content:center;
     transition:transform .2s ease;
   }
-  .block-card:hover .icon-box{transform:scale(1.08) rotate(-3deg);}
+  .block-card:hover .icon-box, .block-card.touch-hover .icon-box{transform:scale(1.08) rotate(-3deg);}
   .icon-box svg{width:28px; height:28px; stroke:var(--red); fill:none; stroke-width:4; stroke-linecap:round; stroke-linejoin:round;}
   .block-card h3{font-family:var(--font-display); font-weight:700; font-size:16px; color:var(--ink); margin-bottom:6px;}
   .block-card p{font-size:12.5px; color:var(--ink-soft); margin:0 0 8px; line-height:1.45;}
@@ -231,7 +231,7 @@
     background:none; border:none; padding:13px 2px; margin:0 -2px; cursor:pointer; font:inherit; color:inherit;
     border-radius:12px; transition:background-color .18s ease, padding-left .18s ease;
   }
-  .day:not(.rest) .day-head:hover{background:var(--red-tint); padding-left:8px;}
+  .day:not(.rest) .day-head:hover, .day:not(.rest) .day-head.touch-hover{background:var(--red-tint); padding-left:8px;}
   .day-head .day-tag{
     font-family:var(--font-mono); font-size:10px; font-weight:700; color:var(--red);
     letter-spacing:.04em; flex:0 0 30px;
@@ -270,7 +270,7 @@
     padding:9px 16px; cursor:pointer;
     transition:transform .18s ease, box-shadow .18s ease;
   }
-  .done-btn:hover{transform:translateY(-2px) scale(1.03); box-shadow:0 6px 14px rgba(0,0,0,0.22);}
+  .done-btn:hover, .done-btn.touch-hover{transform:translateY(-2px) scale(1.03); box-shadow:0 6px 14px rgba(0,0,0,0.22);}
   .done-btn:active{transform:translateY(0) scale(0.98); box-shadow:none;}
   .done-btn.is-done{background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.6);}
 
@@ -283,7 +283,7 @@
     border-radius:999px; cursor:pointer;
     transition:border-color .18s ease, color .18s ease;
   }
-  .reset-btn:hover{border-color:var(--red); color:var(--red);}
+  .reset-btn:hover, .reset-btn.touch-hover{border-color:var(--red); color:var(--red);}
 
   /* ---------- Tables ---------- */
   .card{background:var(--white); border:1px solid var(--white-line); border-radius:var(--radius-lg); padding:18px;}
@@ -311,9 +311,9 @@
     background:var(--white); border:1px solid var(--white-line); border-radius:18px; padding:14px;
     transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
-  .stat:hover{transform:translateY(-3px); box-shadow:0 8px 18px rgba(28,23,18,0.09); border-color:var(--red);}
+  .stat:hover, .stat.touch-hover{transform:translateY(-3px); box-shadow:0 8px 18px rgba(28,23,18,0.09); border-color:var(--red);}
   .stat .v{font-family:var(--font-mono); font-size:19px; font-weight:700; font-variant-numeric:tabular-nums; transition:color .2s ease;}
-  .stat:hover .v{color:var(--red);}
+  .stat:hover .v, .stat.touch-hover .v{color:var(--red);}
   .stat .k{font-family:var(--font-mono); font-size:10px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.05em; margin-top:2px;}
   .prose{font-size:14px; color:var(--ink-soft); line-height:1.6;}
   .prose b{color:var(--ink);}
@@ -465,6 +465,42 @@
 <script>
 (function(){
   "use strict";
+
+  /* ---------- Survol tactile (mobile) ---------- */
+  /* Reproduit au doigt les mêmes animations que :hover à la souris. */
+  (function(){
+    var HOVER_SELECTOR = ".btn-brk, .tabs a, .block-card, .day-head, .done-btn, .reset-btn, .stat";
+    var touchedEl = null;
+    var startX = 0, startY = 0;
+
+    function clearTouch(){
+      if (touchedEl){
+        touchedEl.classList.remove("touch-hover");
+        touchedEl = null;
+      }
+    }
+
+    document.addEventListener("touchstart", function(e){
+      var t = e.touches[0];
+      startX = t.clientX; startY = t.clientY;
+      var el = e.target.closest ? e.target.closest(HOVER_SELECTOR) : null;
+      if (el){
+        touchedEl = el;
+        el.classList.add("touch-hover");
+      }
+    }, { passive:true });
+
+    document.addEventListener("touchmove", function(e){
+      if (!touchedEl) return;
+      var t = e.touches[0];
+      if (Math.abs(t.clientX-startX) > 10 || Math.abs(t.clientY-startY) > 10){
+        clearTouch();
+      }
+    }, { passive:true });
+
+    document.addEventListener("touchend", clearTouch, { passive:true });
+    document.addEventListener("touchcancel", clearTouch, { passive:true });
+  })();
 
   /* ---------- Utils ---------- */
   function pad(n){ return String(n).padStart(2,"0"); }
