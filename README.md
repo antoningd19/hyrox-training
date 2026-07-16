@@ -1,8 +1,8 @@
-# Hyrox Training — Bordeaux
+# Hyrox Training - Bordeaux
 
 **🔗 Accéder au site : [antoningd19.github.io/hyrox-training](https://antoningd19.github.io/hyrox-training/)**
 
-Site de suivi et préparation pour la course **Hyrox Bordeaux** (2 octobre 2026, Parc des Expositions Bordeaux-Lac).
+Site de suivi et préparation pour **l'Hyrox de Bordeaux** (3 octobre 2026, Parc des Expositions Bordeaux-Lac).
 
 Page HTML autonome (PWA installable), sans dépendance ni build, avec plan d'entraînement hebdomadaire et suivi de séances.
 
