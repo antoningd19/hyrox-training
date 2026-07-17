@@ -341,6 +341,35 @@
   .prose p:last-child{margin-bottom:0;}
 
   footer{text-align:center; color:var(--ink-soft); font-family:var(--font-mono); font-size:10.5px; padding:10px 16px 0; letter-spacing:.02em;}
+
+  /* ---------- Desktop (PC/Mac) ---------- */
+  /* Additive only: nothing below this breakpoint is touched, mobile stays exactly as-is. */
+  @media (min-width:860px){
+    .wrap{max-width:760px;}
+    nav.pill{max-width:760px;}
+    .tabs{justify-content:center;}
+
+    .hero-card{padding:48px 60px 44px;}
+    .hero h1{font-size:clamp(3.2rem, 4vw, 4rem);}
+    .hero .sub{font-size:16px; max-width:42ch;}
+    .cta-row{margin-top:28px;}
+
+    h2.section-title{font-size:clamp(1.9rem, 2.6vw, 2.4rem);}
+    .section-sub{font-size:15px;}
+
+    .cd-card{padding:26px 28px;}
+    .countdown{gap:14px;}
+    .countdown .num{font-size:34px;}
+    .countdown .unit{padding:18px 4px;}
+
+    .week-card, .card{padding:26px 28px;}
+    .block-grid{gap:14px;}
+    .block-card{padding:20px;}
+
+    .stat-grid{grid-template-columns:repeat(4,1fr);}
+
+    footer{padding-top:18px;}
+  }
 </style>
 </head>
 <body>
