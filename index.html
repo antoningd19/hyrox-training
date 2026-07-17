@@ -250,6 +250,7 @@
   }
   .day.done .state-dot{background:var(--green); border-color:var(--green);}
   .day.done .state-dot::after{color:#fff;}
+  .day.rest .state-dot{visibility:hidden;}
   .chevron{font-family:var(--font-mono); font-size:13px; color:var(--ink-soft); transition:transform .2s ease; flex:0 0 auto;}
   .day.open .chevron{transform:rotate(90deg); color:var(--red);}
   .day.rest .chevron{visibility:hidden;}
@@ -424,7 +425,7 @@
           <tr><td class="num">5</td><td>Rameur</td><td class="target">1000 m</td></tr>
           <tr><td class="num">6</td><td>Farmers Carry</td><td class="target">200 m · 2×24 kg</td></tr>
           <tr><td class="num">7</td><td>Sandbag Lunges</td><td class="target">100 m · 20 kg</td></tr>
-          <tr><td class="num">8</td><td>Wall Balls</td><td class="target">100 reps · 6 kg @ 3 m</td></tr>
+          <tr><td class="num">8</td><td>Wall Balls</td><td class="target">100 reps · 6 kg à 3 m</td></tr>
         </tbody>
       </table>
       </div>
@@ -607,9 +608,9 @@
         "Objectif Bloc 1 : poser le foncier VMA. Pas de recherche de perf, les sensations avant tout." ]},
       mar:{ title:"Haut du corps : technique", steps:[
         "SkiErg technique 15-20 min : focus bascule des hanches, pas juste les bras. 4×250 m sous-max, pause complète.",
-        "Wall balls technique 5×15 reps @ <b>6 kg</b> (poids de course), focus profondeur de squat + réception du ballon.",
-        "Tirage horizontal 4×10/bras @ <b>25 kg</b> (~55 % de ton 1RM à 45 kg), tempo contrôlé.",
-        "Développé militaire 3×8 @ <b>18 kg</b>/main (~55 % de ton 1RM à 32 kg) : c'est le pattern de poussée du wall ball.",
+        "Wall balls technique 5×15 reps à <b>6 kg</b> (poids de course), focus profondeur de squat + réception du ballon.",
+        "Tirage horizontal 4×10/bras à <b>25 kg</b> (~55 % de ton 1RM à 45 kg), tempo contrôlé.",
+        "Développé militaire 3×8 à <b>18 kg</b>/main (~55 % de ton 1RM à 32 kg) : c'est le pattern de poussée du wall ball.",
         "Tractions 3×8 strict, largement sous ton max (15-18 reps) : ici la technique et le tempo comptent, pas le nombre.",
         "Gainage : planche 3×45 s, Pallof press 3×12/côté." ]},
       mer:{ title:"Endurance fondamentale", steps:[
@@ -617,12 +618,12 @@
         "Test de la parole : tu dois pouvoir discuter sans être essoufflé.",
         "Aucune notion de vitesse ici : l'objectif est de construire la base aérobie." ]},
       jeu:{ title:"Bas du corps : technique", steps:[
-        "Squat back 4×6 @ <b>105 kg</b> (70 % de ton 1RM à 150 kg). Priorité à la technique, pas à la charge.",
-        "Deadlift roumain 3×8 @ <b>100 kg</b> (65 % de ton 1RM à 155 kg) : le pattern de hanche qui sert SkiErg, rameur et sled pull.",
-        "Sled push technique 4×20 m @ <b>110 kg</b> : focus position basse + petits pas. Tu as déjà poussé 135 kg facilement hier, donc ici la charge sert la technique, pas l'effort.",
-        "Sled pull technique 4×20 m @ <b>65 kg</b>, prise et rythme de tirage.",
-        "Farmers carry technique 4×40 m @ <b>20 kg</b>/main, focus gainage + posture.",
-        "Sandbag lunges technique 3×10/jambe @ <b>15 kg</b> (charge max dispo à Fitness Park), focus stabilité du genou." ]},
+        "Squat back 4×6 à <b>105 kg</b> (70 % de ton 1RM à 150 kg). Priorité à la technique, pas à la charge.",
+        "Deadlift roumain 3×8 à <b>100 kg</b> (65 % de ton 1RM à 155 kg) : le pattern de hanche qui sert SkiErg, rameur et sled pull.",
+        "Sled push technique 4×20 m à <b>110 kg</b> : focus position basse + petits pas. Tu as déjà poussé 135 kg facilement hier, donc ici la charge sert la technique, pas l'effort.",
+        "Sled pull technique 4×20 m à <b>65 kg</b>, prise et rythme de tirage.",
+        "Farmers carry technique 4×40 m à <b>20 kg</b>/main, focus gainage + posture.",
+        "Sandbag lunges technique 3×10/jambe à <b>15 kg</b> (charge max dispo à Fitness Park), focus stabilité du genou." ]},
       ven:{ title:"Seuil / tempo", steps:[
         "Échauffement 15 min Z2.",
         "3 × 8-10 min à allure seuil (4'30-4'45/km), récup 2 min trot.",
@@ -630,7 +631,7 @@
       sam:{ title:"Circuit compromised : technique", steps:[
         "Format réduit : 1 km course (Z2/allure Hyrox ~5'00) + 1 station technique légère, ×4 à 6 stations max.",
         "Objectif : automatiser la gestuelle propre de chaque machine, pas la performance.",
-        "Exemple : 1 km + SkiErg technique 500 m → 1 km + Wall balls technique 50 reps @ 6 kg → 1 km + Farmers carry technique 100 m @ 20 kg → 1 km + Sled push technique 20 m @ 110 kg.",
+        "Exemple : 1 km + SkiErg technique 500 m → 1 km + Wall balls technique 50 reps à 6 kg → 1 km + Farmers carry technique 100 m à 20 kg → 1 km + Sled push technique 20 m à 110 kg.",
         "Transitions travaillées lentement, sans précipitation." ]}
     },
     { // Bloc 2 : Développement
@@ -639,20 +640,20 @@
         "Viser la régularité entre les répétitions plutôt que la vitesse pure sur la première." ]},
       mar:{ title:"Haut du corps : volume", steps:[
         "SkiErg 5×400 m à l'allure course cible.",
-        "Wall balls <span class=\"overload-tag\">Surcharge</span> 8×15-20 reps @ <b>8 kg</b> (2 kg au-dessus du poids de course) : l'idée, c'est que le 6 kg du jour J paraisse léger.",
-        "Tirage horizontal 4×8/bras @ <b>32 kg</b> (~70 % de ton 1RM).",
-        "Développé militaire 4×6 @ <b>22 kg</b>/main (~70 % de ton 1RM).",
-        "Tractions lestées 3×6 @ <b>+12 kg</b> : le poids de corps seul ne suffit plus à progresser, on ajoute de la charge.",
+        "Wall balls <span class=\"overload-tag\">Surcharge</span> 8×15-20 reps à <b>8 kg</b> (2 kg au-dessus du poids de course) : l'idée, c'est que le 6 kg du jour J paraisse léger.",
+        "Tirage horizontal 4×8/bras à <b>32 kg</b> (~70 % de ton 1RM).",
+        "Développé militaire 4×6 à <b>22 kg</b>/main (~70 % de ton 1RM).",
+        "Tractions lestées 3×6 à <b>+12 kg</b> : le poids de corps seul ne suffit plus à progresser, on ajoute de la charge.",
         "Gainage lesté 3×45 s." ]},
       mer:{ title:"Endurance fondamentale", steps:[
         "60 à 75 min Z2 continu.",
         "Option : 20 dernières minutes un peu plus soutenues (haut de Z2)." ]},
       jeu:{ title:"Bas du corps : charge", steps:[
-        "Squat 4×5 @ <b>117 kg</b> (78 % de ton 1RM).",
-        "Deadlift roumain 3×6 @ <b>112 kg</b> (72 % de ton 1RM).",
-        "Sled push <span class=\"overload-tag\">Surcharge</span> 4×20-30 m @ <b>150 kg</b>, tout proche de la charge de course (152 kg) : puisque 135 kg était facile hier, on monte directement.",
-        "Sled pull 4×20-30 m @ <b>90 kg</b>.",
-        "Farmers carry <span class=\"overload-tag\">Surcharge</span> 4×50 m @ <b>28 kg</b>/main (au-dessus des 24 kg de course, testés très faciles hier).",
+        "Squat 4×5 à <b>117 kg</b> (78 % de ton 1RM).",
+        "Deadlift roumain 3×6 à <b>112 kg</b> (72 % de ton 1RM).",
+        "Sled push <span class=\"overload-tag\">Surcharge</span> 4×20-30 m à <b>150 kg</b>, tout proche de la charge de course (152 kg) : puisque 135 kg était facile hier, on monte directement.",
+        "Sled pull 4×20-30 m à <b>90 kg</b>.",
+        "Farmers carry <span class=\"overload-tag\">Surcharge</span> 4×50 m à <b>28 kg</b>/main (au-dessus des 24 kg de course, testés très faciles hier).",
         "Sandbag lunges <span class=\"overload-tag\">Surcharge</span> 4×15/jambe : sac 15 kg + <b>haltère 8 kg</b> tenu devant la poitrine (≈23 kg au total, au-dessus des 20 kg de course)." ]},
       ven:{ title:"Seuil", steps:[
         "4 × 10 min à allure seuil (4'30-4'45/km), récup 90 s." ]},
@@ -667,15 +668,15 @@
         "Travail de la résistance à l'allure course." ]},
       mar:{ title:"Haut du corps : format course", steps:[
         "SkiErg 1000 m chronométré (conditions de course).",
-        "Wall balls 100 reps en séries de 10 @ <b>6 kg</b> (poids de course) : après deux semaines à 8 kg, ça doit se sentir nettement plus léger.",
-        "Tractions lestées 3×5 @ <b>+18 kg</b>, pic de force avant l'affûtage.",
+        "Wall balls 100 reps en séries de 10 à <b>6 kg</b> (poids de course) : après deux semaines à 8 kg, ça doit se sentir nettement plus léger.",
+        "Tractions lestées 3×5 à <b>+18 kg</b>, pic de force avant l'affûtage.",
         "Gainage anti-rotation." ]},
       mer:{ title:"Endurance allégée", steps:[
         "45 à 50 min Z2, séance allégée pour absorber la charge spécifique." ]},
       jeu:{ title:"Bas du corps : charges cibles", steps:[
         "Sled push/pull aux charges de course, <b>152 kg</b> / <b>103 kg</b>, sur 50 m complets.",
-        "Farmers carry <span class=\"overload-tag\">Surcharge puis course</span> : 1 série @ <b>30 kg</b>/main sur 50 m, puis 200 m continus @ <b>24 kg</b>/main (poids de course). Le contraste doit rendre la série de course plus facile.",
-        "Sandbag lunges 100 m @ <b>20 kg</b> (sac 15 kg + <b>haltère 5-6 kg</b> tenu devant la poitrine), en conditions de course." ]},
+        "Farmers carry <span class=\"overload-tag\">Surcharge puis course</span> : 1 série à <b>30 kg</b>/main sur 50 m, puis 200 m continus à <b>24 kg</b>/main (poids de course). Le contraste doit rendre la série de course plus facile.",
+        "Sandbag lunges 100 m à <b>20 kg</b> (sac 15 kg + <b>haltère 5-6 kg</b> tenu devant la poitrine), en conditions de course." ]},
       ven:{ title:"Allure Hyrox continue", steps:[
         "5 à 6 km continus à l'allure Hyrox cible (~5'00/km)." ]},
       sam:{ title:"Simulation / format spécifique", steps:[
@@ -687,16 +688,16 @@
         "4 à 5 × 400 m à allure vive, volume réduit.",
         "Chercher les sensations de fraîcheur, pas la fatigue." ]},
       mar:{ title:"Haut du corps : rappel léger", steps:[
-        "Rappel technique SkiErg + wall balls @ <b>6 kg</b> (poids de course), volume réduit de moitié.",
-        "Développé militaire 2×8 @ <b>16 kg</b>/main, léger.",
+        "Rappel technique SkiErg + wall balls à <b>6 kg</b> (poids de course), volume réduit de moitié.",
+        "Développé militaire 2×8 à <b>16 kg</b>/main, léger.",
         "Tractions 2×6 poids de corps, aucune charge ajoutée." ]},
       mer:{ title:"Endurance courte", steps:[
         "30 à 40 min Z2, très facile." ]},
       jeu:{ title:"Bas du corps : entretien", steps:[
-        "Squat 2×5 @ <b>90 kg</b> (60 % de ton 1RM), juste entretenir le pattern.",
-        "Sled push 2×20 m @ <b>100 kg</b>, léger.",
-        "Farmers carry 2×40 m @ <b>20 kg</b>/main, léger.",
-        "Sandbag lunges 2×10/jambe @ <b>15 kg</b> (sac seul, sans haltère).",
+        "Squat 2×5 à <b>90 kg</b> (60 % de ton 1RM), juste entretenir le pattern.",
+        "Sled push 2×20 m à <b>100 kg</b>, léger.",
+        "Farmers carry 2×40 m à <b>20 kg</b>/main, léger.",
+        "Sandbag lunges 2×10/jambe à <b>15 kg</b> (sac seul, sans haltère).",
         "Aucune fatigue résiduelle recherchée ici." ]},
       ven:{ title:"Activation", steps:[
         "20 à 25 min avec 3 à 4 × 200 m à allure Hyrox.",
