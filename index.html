@@ -597,7 +597,7 @@
     { name:"Fondations & Technique", icon:"barbell", start:new Date(2026,6,14), end:new Date(2026,7,3),
       desc:"Gestuelle propre de chaque station, priorité absolue. Base aérobie. Filmer sa technique." },
     { name:"Développement", icon:"bars", start:new Date(2026,7,4), end:new Date(2026,7,31),
-      desc:"Volume et seuil en hausse. Force spécifique : sled ≥152 kg, volume wall balls. Demi-simulations le samedi." },
+      desc:"Volume et seuil en hausse. Force spécifique : sled ≥152 kg, volume wall balls. Demi-simulations le jeudi." },
     { name:"Spécifique & Simulations", icon:"stopwatch", start:new Date(2026,8,1), end:new Date(2026,8,21),
       desc:"Format spécifique, pacing, simulation complète chronométrée. Travail de la roxzone." },
     { name:"Affûtage & Jour J", icon:"flag", start:new Date(2026,8,22), end:new Date(2026,9,3),
@@ -654,122 +654,122 @@
   /* ---------- Détails de séances par bloc ---------- */
   var SESSIONS = [
     { // Bloc 1 : Fondations & Technique
-      lun:{ title:"Qualité : VMA", steps:[
-        "Échauffement 15 min footing Z2 + 4 lignes droites progressives.",
-        "8 à 10 × 400 m à allure VMA (4'00-4'15/km), récup 1'30 trot entre les répétitions.",
-        "Retour au calme 10 min footing très facile + étirements.",
-        "Objectif Bloc 1 : poser le foncier VMA. Pas de recherche de perf, les sensations avant tout." ]},
-      mar:{ title:"Haut du corps : technique", steps:[
+      lun:{ title:"Haut du corps : technique", steps:[
         "SkiErg technique 15-20 min : focus bascule des hanches, pas juste les bras. 4×250 m sous-max, pause complète.",
         "Wall balls technique 5×15 reps à <b>6 kg</b> (poids de course), focus profondeur de squat + réception du ballon.",
         "Tirage horizontal 4×10/bras à <b>25 kg</b> (~55 % de ton 1RM à 45 kg), tempo contrôlé.",
         "Développé militaire 3×8 à <b>18 kg</b>/main (~55 % de ton 1RM à 32 kg) : c'est le pattern de poussée du wall ball.",
         "Tractions 3×8 strict, largement sous ton max (15-18 reps) : ici la technique et le tempo comptent, pas le nombre.",
         "Gainage : planche 3×45 s, Pallof press 3×12/côté." ]},
-      mer:{ title:"Endurance fondamentale", steps:[
-        "45 à 60 min footing Z2 continu, allure 5'30-6'00/km.",
-        "Test de la parole : tu dois pouvoir discuter sans être essoufflé.",
-        "Aucune notion de vitesse ici : l'objectif est de construire la base aérobie." ]},
-      jeu:{ title:"Bas du corps : technique", steps:[
+      mar:{ title:"Bas du corps : technique", steps:[
         "Squat back 4×6 à <b>105 kg</b> (70 % de ton 1RM à 150 kg). Priorité à la technique, pas à la charge.",
         "Deadlift roumain 3×8 à <b>100 kg</b> (65 % de ton 1RM à 155 kg) : le pattern de hanche qui sert SkiErg, rameur et sled pull.",
         "Sled push technique 4×20 m à <b>110 kg</b> : focus position basse + petits pas. Tu as déjà poussé 135 kg facilement hier, donc ici la charge sert la technique, pas l'effort.",
         "Sled pull technique 4×20 m à <b>65 kg</b>, prise et rythme de tirage.",
         "Farmers carry technique 4×40 m à <b>20 kg</b>/main, focus gainage + posture.",
         "Sandbag lunges technique 3×10/jambe à <b>15 kg</b> (charge max dispo à Fitness Park), focus stabilité du genou." ]},
-      ven:{ title:"Seuil / tempo", steps:[
-        "Échauffement 15 min Z2.",
-        "3 × 8-10 min à allure seuil (4'30-4'45/km), récup 2 min trot.",
-        "Retour au calme 10 min." ]},
-      sam:{ title:"Circuit compromised : technique", steps:[
+      mer:{ title:"Qualité : VMA", steps:[
+        "Échauffement 15 min footing Z2 + 4 lignes droites progressives.",
+        "8 à 10 × 400 m à allure VMA (4'00-4'15/km), récup 1'30 trot entre les répétitions.",
+        "Retour au calme 10 min footing très facile + étirements.",
+        "Objectif Bloc 1 : poser le foncier VMA. Pas de recherche de perf, les sensations avant tout." ]},
+      jeu:{ title:"Circuit compromised : technique", steps:[
         "Format réduit : 1 km course (Z2/allure Hyrox ~5'00) + 1 station technique légère, ×4 à 6 stations max.",
         "Objectif : automatiser la gestuelle propre de chaque machine, pas la performance.",
         "Exemple : 1 km + SkiErg technique 500 m → 1 km + Wall balls technique 50 reps à 6 kg → 1 km + Farmers carry technique 100 m à 20 kg → 1 km + Sled push technique 20 m à 110 kg.",
-        "Transitions travaillées lentement, sans précipitation." ]}
+        "Transitions travaillées lentement, sans précipitation." ]},
+      sam:{ title:"Seuil / tempo", steps:[
+        "Échauffement 15 min Z2.",
+        "3 × 8-10 min à allure seuil (4'30-4'45/km), récup 2 min trot.",
+        "Retour au calme 10 min." ]},
+      dim:{ title:"Endurance fondamentale", steps:[
+        "45 à 60 min footing Z2 continu, allure 5'30-6'00/km.",
+        "Test de la parole : tu dois pouvoir discuter sans être essoufflé.",
+        "Aucune notion de vitesse ici : l'objectif est de construire la base aérobie." ]}
     },
     { // Bloc 2 : Développement
-      lun:{ title:"Qualité : VMA", steps:[
-        "10 à 12 × 400 m à allure VMA (4'00-4'15/km), récup 1' trot.",
-        "Viser la régularité entre les répétitions plutôt que la vitesse pure sur la première." ]},
-      mar:{ title:"Haut du corps : volume", steps:[
+      lun:{ title:"Haut du corps : volume", steps:[
         "SkiErg 5×400 m à l'allure course cible.",
         "Wall balls <span class=\"overload-tag\">Surcharge</span> 8×15-20 reps à <b>8 kg</b> (2 kg au-dessus du poids de course) : l'idée, c'est que le 6 kg du jour J paraisse léger.",
         "Tirage horizontal 4×8/bras à <b>32 kg</b> (~70 % de ton 1RM).",
         "Développé militaire 4×6 à <b>22 kg</b>/main (~70 % de ton 1RM).",
         "Tractions lestées 3×6 à <b>+12 kg</b> : le poids de corps seul ne suffit plus à progresser, on ajoute de la charge.",
         "Gainage lesté 3×45 s." ]},
-      mer:{ title:"Endurance fondamentale", steps:[
-        "60 à 75 min Z2 continu.",
-        "Option : 20 dernières minutes un peu plus soutenues (haut de Z2)." ]},
-      jeu:{ title:"Bas du corps : charge", steps:[
+      mar:{ title:"Bas du corps : charge", steps:[
         "Squat 4×5 à <b>117 kg</b> (78 % de ton 1RM).",
         "Deadlift roumain 3×6 à <b>112 kg</b> (72 % de ton 1RM).",
         "Sled push <span class=\"overload-tag\">Surcharge</span> 4×20-30 m à <b>150 kg</b>, tout proche de la charge de course (152 kg) : puisque 135 kg était facile hier, on monte directement.",
         "Sled pull 4×20-30 m à <b>90 kg</b>.",
         "Farmers carry <span class=\"overload-tag\">Surcharge</span> 4×50 m à <b>28 kg</b>/main (au-dessus des 24 kg de course, testés très faciles hier).",
         "Sandbag lunges <span class=\"overload-tag\">Surcharge</span> 4×15/jambe : sac 15 kg + <b>haltère 8 kg</b> tenu devant la poitrine (≈23 kg au total, au-dessus des 20 kg de course)." ]},
-      ven:{ title:"Seuil", steps:[
-        "4 × 10 min à allure seuil (4'30-4'45/km), récup 90 s." ]},
-      sam:{ title:"Demi-simulation Hyrox", steps:[
+      mer:{ title:"Qualité : VMA", steps:[
+        "10 à 12 × 400 m à allure VMA (4'00-4'15/km), récup 1' trot.",
+        "Viser la régularité entre les répétitions plutôt que la vitesse pure sur la première." ]},
+      jeu:{ title:"Demi-simulation Hyrox", steps:[
         "4 km + 4 stations (moitié du format course), aux charges réelles de course : wall balls 6 kg, sled proche de 152/103 kg, farmers 24 kg, sandbag 20 kg.",
-        "Contrairement aux séances du mardi et jeudi (surcharge), ici on rejoue les vraies charges du jour J pour caler le pacing.",
-        "Transitions chronométrées : on commence à travailler la roxzone." ]}
+        "Contrairement aux séances du lundi et mardi (surcharge), ici on rejoue les vraies charges du jour J pour caler le pacing.",
+        "Transitions chronométrées : on commence à travailler la roxzone." ]},
+      sam:{ title:"Seuil", steps:[
+        "4 × 10 min à allure seuil (4'30-4'45/km), récup 90 s." ]},
+      dim:{ title:"Endurance fondamentale", steps:[
+        "60 à 75 min Z2 continu.",
+        "Option : 20 dernières minutes un peu plus soutenues (haut de Z2)." ]}
     },
     { // Bloc 3 : Spécifique & Simulations
-      lun:{ title:"Spécifique : VMA/allure course", steps:[
-        "6 à 8 × 600-800 m à allure spécifique/VMA, récup courte.",
-        "Travail de la résistance à l'allure course." ]},
-      mar:{ title:"Haut du corps : format course", steps:[
+      lun:{ title:"Haut du corps : format course", steps:[
         "SkiErg 1000 m chronométré (conditions de course).",
         "Wall balls 100 reps en séries de 10 à <b>6 kg</b> (poids de course) : après deux semaines à 8 kg, ça doit se sentir nettement plus léger.",
         "Tractions lestées 3×5 à <b>+18 kg</b>, pic de force avant l'affûtage.",
         "Gainage anti-rotation." ]},
-      mer:{ title:"Endurance allégée", steps:[
-        "45 à 50 min Z2, séance allégée pour absorber la charge spécifique." ]},
-      jeu:{ title:"Bas du corps : charges cibles", steps:[
+      mar:{ title:"Bas du corps : charges cibles", steps:[
         "Sled push/pull aux charges de course, <b>152 kg</b> / <b>103 kg</b>, sur 50 m complets.",
         "Farmers carry <span class=\"overload-tag\">Surcharge puis course</span> : 1 série à <b>30 kg</b>/main sur 50 m, puis 200 m continus à <b>24 kg</b>/main (poids de course). Le contraste doit rendre la série de course plus facile.",
         "Sandbag lunges 100 m à <b>20 kg</b> (sac 15 kg + <b>haltère 5-6 kg</b> tenu devant la poitrine), en conditions de course." ]},
-      ven:{ title:"Allure Hyrox continue", steps:[
-        "5 à 6 km continus à l'allure Hyrox cible (~5'00/km)." ]},
-      sam:{ title:"Simulation / format spécifique", steps:[
+      mer:{ title:"Spécifique : VMA/allure course", steps:[
+        "6 à 8 × 600-800 m à allure spécifique/VMA, récup courte.",
+        "Travail de la résistance à l'allure course." ]},
+      jeu:{ title:"Simulation / format spécifique", steps:[
         "Semaine 9 : SIMULATION COMPLÈTE, 8 km + 8 stations, standards complets, roxzone chronométrée.",
-        "Autres semaines du bloc : format spécifique réduit, 6 km + 6 stations." ]}
+        "Autres semaines du bloc : format spécifique réduit, 6 km + 6 stations." ]},
+      sam:{ title:"Allure Hyrox continue", steps:[
+        "5 à 6 km continus à l'allure Hyrox cible (~5'00/km)." ]},
+      dim:{ title:"Endurance allégée", steps:[
+        "45 à 50 min Z2, séance allégée pour absorber la charge spécifique." ]}
     },
     { // Bloc 4 : Affûtage & Jour J
-      lun:{ title:"VMA courte", steps:[
-        "4 à 5 × 400 m à allure vive, volume réduit.",
-        "Chercher les sensations de fraîcheur, pas la fatigue." ]},
-      mar:{ title:"Haut du corps : rappel léger", steps:[
+      lun:{ title:"Haut du corps : rappel léger", steps:[
         "Rappel technique SkiErg + wall balls à <b>6 kg</b> (poids de course), volume réduit de moitié.",
         "Développé militaire 2×8 à <b>16 kg</b>/main, léger.",
         "Tractions 2×6 poids de corps, aucune charge ajoutée." ]},
-      mer:{ title:"Endurance courte", steps:[
-        "30 à 40 min Z2, très facile." ]},
-      jeu:{ title:"Bas du corps : entretien", steps:[
+      mar:{ title:"Bas du corps : entretien", steps:[
         "Squat 2×5 à <b>90 kg</b> (60 % de ton 1RM), juste entretenir le pattern.",
         "Sled push 2×20 m à <b>100 kg</b>, léger.",
         "Farmers carry 2×40 m à <b>20 kg</b>/main, léger.",
         "Sandbag lunges 2×10/jambe à <b>15 kg</b> (sac seul, sans haltère).",
         "Aucune fatigue résiduelle recherchée ici." ]},
-      ven:{ title:"Activation", steps:[
+      mer:{ title:"VMA courte", steps:[
+        "4 à 5 × 400 m à allure vive, volume réduit.",
+        "Chercher les sensations de fraîcheur, pas la fatigue." ]},
+      jeu:{ title:"Activation", steps:[
         "20 à 25 min avec 3 à 4 × 200 m à allure Hyrox.",
-        "Jambes fraîches avant le week-end." ]},
-      sam:{ title:"Semaine de course", steps:[
-        "Dernier footing très court à J-2.",
-        "Repos complet à J-1.",
-        "Course le samedi 3 octobre. C'est le jour J." ]}
+        "Jambes fraîches avant le repos de vendredi." ]},
+      sam:{ title:"Jour J (ou dernière touche)", steps:[
+        "Semaine normale du bloc : 30 à 40 min Z2 très facile, aucune notion de vitesse.",
+        "Semaine du 3 octobre : c'est le jour J, tu cours le Hyrox. La stratégie complète est dans la section dédiée plus bas sur la page." ]},
+      dim:{ title:"Récupération", steps:[
+        "Semaine normale du bloc : repos complet ou 20 min très facile en récupération.",
+        "Semaine du 3 octobre : repos total le lendemain de la course. Profite, tu l'as fait." ]}
     }
   ];
 
   var WEEK_TEMPLATE = [
-    { key:"lun", name:"LUN", desc:"Course : qualité (VMA / intervalles)" },
-    { key:"mar", name:"MAR", desc:"Muscu : haut du corps + stations push/pull" },
-    { key:"mer", name:"MER", desc:"Course : endurance fondamentale (Z2)" },
-    { key:"jeu", name:"JEU", desc:"Muscu : bas du corps + sled / carry" },
-    { key:"ven", name:"VEN", desc:"Course : seuil / tempo" },
-    { key:"sam", name:"SAM", desc:"Mixte : circuit Hyrox compromised" },
-    { key:"dim", name:"DIM", desc:"Repos", rest:true }
+    { key:"lun", name:"LUN", desc:"Muscu : haut du corps + stations push/pull" },
+    { key:"mar", name:"MAR", desc:"Muscu : bas du corps + sled / carry" },
+    { key:"mer", name:"MER", desc:"Course : qualité (VMA / intervalles)" },
+    { key:"jeu", name:"JEU", desc:"Mixte : circuit Hyrox compromised" },
+    { key:"ven", name:"VEN", desc:"Repos", rest:true },
+    { key:"sam", name:"SAM", desc:"Course : seuil / tempo" },
+    { key:"dim", name:"DIM", desc:"Course : endurance fondamentale (Z2)" }
   ];
 
   function getDayState(state, dayKey){
@@ -922,7 +922,7 @@
       "Broad jump (spécifique burpee broad jump) : 4×5, stabilise la réception avant de repartir.",
       "Pogo hops (petits sauts de cheville) : 3×15-20 s, contact au sol minimal.",
       "Skater jumps (sauts latéraux) : 3×8/côté, stabilité latérale genou/cheville.",
-      "Débute à 50-80 contacts au sol par séance, 2×/semaine max, en insistant sur la qualité de réception avant la vitesse. À intégrer en fin d'échauffement du lundi (VMA) ou du samedi (circuit)." ]}
+      "Débute à 50-80 contacts au sol par séance, 2×/semaine max, en insistant sur la qualité de réception avant la vitesse. À intégrer en fin d'échauffement du mercredi (VMA) ou du jeudi (circuit)." ]}
   ];
 
   var openMobilityKey = null;
