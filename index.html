@@ -163,8 +163,6 @@
   .countdown .unit{background:var(--cream); border:1px solid var(--cream-line); border-radius:14px; padding:14px 4px;}
   .countdown .num{font-family:var(--font-mono); font-size:26px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--red);}
   .countdown .lbl{font-family:var(--font-mono); font-size:9px; text-transform:uppercase; color:var(--ink-soft); letter-spacing:.08em; margin-top:2px; display:block;}
-  .race-meta{margin-top:14px; font-size:13px; color:var(--ink-soft); text-align:center;}
-  .race-meta b{color:var(--ink); font-weight:700;}
 
   /* ---------- Programme cards ---------- */
   h2.section-title{
@@ -423,7 +421,6 @@
         <div class="unit"><span class="num" id="cd-mins">--</span><span class="lbl">min</span></div>
         <div class="unit"><span class="num" id="cd-secs">--</span><span class="lbl">sec</span></div>
       </div>
-      <p class="race-meta">Départ estimé <b>08:00</b> · <b id="race-week-info">chargement</b></p>
     </div>
   </section>
 
@@ -642,9 +639,6 @@
         '<div class="dates">' + fmtDate(b.start) + ' → ' + fmtDate(b.end) + '</div>';
       container.appendChild(el);
     });
-
-    var b = BLOCKS[idx];
-    document.getElementById("race-week-info").textContent = b.name;
 
     var legend = document.getElementById("block-legend");
     legend.innerHTML = "";
