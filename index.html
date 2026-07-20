@@ -219,7 +219,17 @@
 
   /* ---------- Suivi de séances ---------- */
   .week-card{background:var(--white); border:1px solid var(--white-line); border-radius:var(--radius-lg); padding:16px 14px;}
-  .week-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;}
+  .week-nav{display:flex; align-items:center; gap:8px; margin-bottom:4px;}
+  .week-nav-btn{
+    flex:0 0 auto; width:26px; height:26px; border-radius:50%;
+    border:1px solid var(--white-line); background:var(--cream); color:var(--ink);
+    font-family:var(--font-mono); font-size:13px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:border-color .18s ease, color .18s ease, opacity .18s ease;
+  }
+  .week-nav-btn:hover:not(:disabled), .week-nav-btn.touch-hover:not(:disabled){border-color:var(--red); color:var(--red);}
+  .week-nav-btn:disabled{opacity:.35; cursor:default;}
+  .week-head{display:flex; justify-content:space-between; align-items:baseline; flex:1; min-width:0;}
   .week-head strong{font-family:var(--font-display); font-weight:700; font-size:16px;}
   .week-head .range{font-family:var(--font-mono); font-size:10px; color:var(--ink-soft);}
   .week-hint{font-size:12.5px; color:var(--ink-soft); margin-bottom:12px;}
@@ -444,9 +454,13 @@
     </div>
 
     <div class="week-card">
-      <div class="week-head">
-        <strong id="week-label">Semaine</strong>
-        <span class="range" id="week-range">chargement</span>
+      <div class="week-nav">
+        <button type="button" class="week-nav-btn" id="week-prev" aria-label="Semaine précédente">←</button>
+        <div class="week-head">
+          <strong id="week-label">Semaine</strong>
+          <span class="range" id="week-range">chargement</span>
+        </div>
+        <button type="button" class="week-nav-btn" id="week-next" aria-label="Semaine suivante">→</button>
       </div>
       <div id="week-list"></div>
       <div class="progress-bar"><div class="fill" id="week-fill"></div></div>
@@ -539,7 +553,7 @@
   /* ---------- Survol tactile (mobile) ---------- */
   /* Reproduit au doigt les mêmes animations que :hover à la souris. */
   (function(){
-    var HOVER_SELECTOR = ".btn-brk, .tabs a, .block-card, .day-head, .done-btn, .reset-btn, .stat";
+    var HOVER_SELECTOR = ".btn-brk, .tabs a, .block-card, .day-head, .done-btn, .reset-btn, .stat, .week-nav-btn";
     var touchedEl = null;
     var startX = 0, startY = 0;
 
@@ -614,8 +628,8 @@
       desc:"Réduction du volume, intensité courte maintenue. Course le 3 octobre." }
   ];
 
-  function currentBlockIndex(){
-    var now = new Date();
+  function currentBlockIndex(forDate){
+    var now = forDate || new Date();
     for (var i=0;i<BLOCKS.length;i++){
       if (now <= BLOCKS[i].end) return i;
     }
@@ -812,16 +826,26 @@
   }
 
   var openDayKey = null;
+  var weekOffset = 0; // 0 = semaine en cours, négatif = semaines passées
 
-  function renderWeek(blockIdx){
-    var monday = mondayOf(new Date());
+  function getViewedMonday(){
+    var base = mondayOf(new Date());
+    return new Date(base.getFullYear(), base.getMonth(), base.getDate() + weekOffset*7);
+  }
+
+  function renderWeek(){
+    var monday = getViewedMonday();
     var sunday = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate()+6);
     var key = weekStorageKey(monday);
     var state = loadWeekState(key);
-    var sessions = SESSIONS[blockIdx];
+    var sessions = SESSIONS[currentBlockIndex(monday)];
 
     document.getElementById("week-range").textContent = fmtDate(monday) + " - " + fmtDate(sunday);
     document.getElementById("week-label").textContent = "Semaine du " + fmtDate(monday);
+
+    var firstMonday = mondayOf(TRACKING_START);
+    document.getElementById("week-prev").disabled = monday <= firstMonday;
+    document.getElementById("week-next").disabled = weekOffset >= 0;
 
     var listEl = document.getElementById("week-list");
     listEl.innerHTML = "";
@@ -876,7 +900,7 @@
         head.addEventListener("click", function(){
           var willOpen = openDayKey !== day.key;
           openDayKey = willOpen ? day.key : null;
-          renderWeek(blockIdx);
+          renderWeek();
           if (willOpen){
             requestAnimationFrame(function(){
               wrap.scrollIntoView({ behavior:"smooth", block:"nearest" });
@@ -891,7 +915,7 @@
           ds.done = !ds.done;
           s[day.key] = ds;
           saveWeekState(key, s);
-          renderWeek(blockIdx);
+          renderWeek();
         });
 
         noteInput.addEventListener("input", function(){
@@ -1026,15 +1050,27 @@
 
   /* ---------- Init ---------- */
   var blockIdx = renderBlocksAndHero();
-  renderWeek(blockIdx);
+  renderWeek();
   renderMobility();
 
   document.getElementById("reset-week").addEventListener("click", function(){
-    var monday = mondayOf(new Date());
-    var key = weekStorageKey(monday);
+    var key = weekStorageKey(getViewedMonday());
     saveWeekState(key, {});
     openDayKey = null;
-    renderWeek(blockIdx);
+    renderWeek();
+  });
+
+  document.getElementById("week-prev").addEventListener("click", function(){
+    weekOffset -= 1;
+    openDayKey = null;
+    renderWeek();
+  });
+
+  document.getElementById("week-next").addEventListener("click", function(){
+    if (weekOffset >= 0) return;
+    weekOffset += 1;
+    openDayKey = null;
+    renderWeek();
   });
 
   var days = tickCountdown();
