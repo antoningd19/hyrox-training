@@ -433,6 +433,16 @@
     <p class="eyebrow">Cette semaine</p>
     <h2 class="section-title">Sept jours, <span class="accent">un plan</span>.</h2>
     <p class="section-sub">Touche une séance pour voir le détail exact à faire.</p>
+
+    <div class="week-card" style="margin-bottom:10px;">
+      <div class="week-head">
+        <strong>Adhérence globale</strong>
+        <span class="range">Depuis le 15 juillet</span>
+      </div>
+      <div class="progress-bar"><div class="fill" id="overall-fill"></div></div>
+      <div class="progress-txt" id="overall-progress-txt">chargement</div>
+    </div>
+
     <div class="week-card">
       <div class="week-head">
         <strong id="week-label">Semaine</strong>
@@ -907,6 +917,38 @@
     var pct = Math.round((done/total) * 100);
     document.getElementById("week-fill").style.width = pct + "%";
     document.getElementById("week-progress-txt").textContent = done + "/" + total + " séances";
+    updateOverallProgress();
+  }
+
+  /* ---------- Adhérence globale (depuis le 15 juillet) ---------- */
+  var TRACKING_START = new Date(2026, 6, 15);
+  var WEEKDAY_TO_KEY = {1:"lun", 2:"mar", 3:"mer", 4:"jeu", 5:"ven", 6:"sam", 0:"dim"};
+
+  function computeOverallProgress(){
+    var today = new Date();
+    today.setHours(0,0,0,0);
+    var cursor = new Date(TRACKING_START.getFullYear(), TRACKING_START.getMonth(), TRACKING_START.getDate());
+    var stateCache = {};
+    var done = 0, total = 0;
+
+    while (cursor <= today){
+      var dayKey = WEEKDAY_TO_KEY[cursor.getDay()];
+      if (dayKey !== "ven"){
+        var mkey = weekStorageKey(mondayOf(cursor));
+        if (!stateCache[mkey]) stateCache[mkey] = loadWeekState(mkey);
+        total++;
+        if (getDayState(stateCache[mkey], dayKey).done) done++;
+      }
+      cursor.setDate(cursor.getDate() + 1);
+    }
+    return { done:done, total:total };
+  }
+
+  function updateOverallProgress(){
+    var r = computeOverallProgress();
+    var pct = r.total > 0 ? Math.round((r.done / r.total) * 100) : 0;
+    document.getElementById("overall-fill").style.width = pct + "%";
+    document.getElementById("overall-progress-txt").textContent = r.done + "/" + r.total + " séances (" + pct + " %)";
   }
 
   /* ---------- Mobilité & pliométrie ---------- */
