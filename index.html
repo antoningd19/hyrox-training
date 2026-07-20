@@ -138,14 +138,6 @@
     padding:26px 20px 22px; text-align:center;
     box-shadow:0 1px 3px rgba(28,23,18,0.05);
   }
-  .status-pill{
-    display:inline-flex; align-items:center; gap:8px;
-    background:var(--red-tint); border:1px solid rgba(200,30,60,0.18);
-    border-radius:999px; padding:7px 14px; margin-bottom:22px;
-  }
-  .status-pill .dot{width:8px; height:8px; border-radius:50%; background:var(--red); flex:0 0 auto;}
-  .status-pill span.txt{font-family:var(--font-mono); font-size:11px; font-weight:700; letter-spacing:.04em; color:var(--ink); text-transform:uppercase;}
-
   .hero h1{
     font-family:var(--font-display); font-style:italic; font-weight:900;
     font-size:clamp(2.1rem, 9vw, 3.1rem); line-height:1.04; letter-spacing:-0.01em;
@@ -408,12 +400,8 @@
 
   <section id="hero">
     <div class="hero-card">
-      <div class="status-pill">
-        <span class="dot"></span>
-        <span class="txt" id="hero-status">Chargement du bloc</span>
-      </div>
       <div class="hero">
-        <h1>Zéro technique.<br>Objectif <span class="accent">1h05.</span></h1>
+        <h1>Prépa Hyrox.<br>Objectif <span class="accent">1h05.</span></h1>
         <p class="sub">8 km de course, 8 stations, une roxzone. Hyrox Bordeaux, samedi 3 octobre 2026, catégorie Open Solo.</p>
       </div>
       <div class="cta-row">
@@ -656,7 +644,6 @@
     });
 
     var b = BLOCKS[idx];
-    document.getElementById("hero-status").textContent = "Bloc " + (idx+1) + " · " + b.name;
     document.getElementById("race-week-info").textContent = b.name;
 
     var legend = document.getElementById("block-legend");
@@ -682,7 +669,6 @@
         "Échauffement 6-8 min : mobilité cheville/épaule + activation légère.",
         "SkiErg : focus technique 4×250 m.",
         "Wall balls 5×15 à <b>6 kg</b> : focus squat + réception.",
-        "Tirage horizontal 4×10/bras à <b>25 kg</b>, tempo contrôlé.",
         "Développé militaire 3×8 à <b>18 kg</b>/main.",
         "Tractions 3×8 strict, tempo contrôlé.",
         "Gainage : planche 3×45 s, Pallof press 3×12/côté." ]},
@@ -1071,7 +1057,7 @@
 
   var days = tickCountdown();
   document.getElementById("fine-print").textContent =
-    "J-" + days + " · Bloc " + (blockIdx+1) + " · " + BLOCKS[blockIdx].name + " · Départ 08:00";
+    "J-" + days + " · Bloc " + (blockIdx+1) + " · " + BLOCKS[blockIdx].name;
   setInterval(tickCountdown, 1000);
 
 })();
