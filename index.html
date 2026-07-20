@@ -437,7 +437,7 @@
     <div class="week-card" style="margin-bottom:10px;">
       <div class="week-head">
         <strong>Adhérence globale</strong>
-        <span class="range">Depuis le 15 juillet</span>
+        <span class="range">15 juil. → 3 oct.</span>
       </div>
       <div class="progress-bar"><div class="fill" id="overall-fill"></div></div>
       <div class="progress-txt" id="overall-progress-txt">chargement</div>
@@ -922,16 +922,16 @@
 
   /* ---------- Adhérence globale (depuis le 15 juillet) ---------- */
   var TRACKING_START = new Date(2026, 6, 15);
+  var TRACKING_END = new Date(2026, 9, 3); // jour J inclus
   var WEEKDAY_TO_KEY = {1:"lun", 2:"mar", 3:"mer", 4:"jeu", 5:"ven", 6:"sam", 0:"dim"};
 
   function computeOverallProgress(){
-    var today = new Date();
-    today.setHours(0,0,0,0);
     var cursor = new Date(TRACKING_START.getFullYear(), TRACKING_START.getMonth(), TRACKING_START.getDate());
+    var end = new Date(TRACKING_END.getFullYear(), TRACKING_END.getMonth(), TRACKING_END.getDate());
     var stateCache = {};
     var done = 0, total = 0;
 
-    while (cursor <= today){
+    while (cursor <= end){
       var dayKey = WEEKDAY_TO_KEY[cursor.getDay()];
       if (dayKey !== "ven"){
         var mkey = weekStorageKey(mondayOf(cursor));
