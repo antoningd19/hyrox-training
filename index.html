@@ -161,7 +161,7 @@
   .cd-card{background:var(--white); border:1px solid var(--white-line); border-radius:var(--radius-lg); padding:18px;}
   .countdown{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; text-align:center;}
   .countdown .unit{background:var(--red); border:1px solid var(--cream-line); border-radius:14px; padding:14px 4px;}
-  .countdown .num{font-family:var(--font-mono); font-size:26px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--cream);}
+  .countdown .num{font-family:var(--font-mono); font-size:26px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--ink);}
   .countdown .lbl{font-family:var(--font-mono); font-size:9px; text-transform:uppercase; color:var(--ink-soft); letter-spacing:.08em; margin-top:2px; display:block;}
 
   /* ---------- Programme cards ---------- */
@@ -192,12 +192,12 @@
   }
   .icon-box{
     width:56px; height:56px; border-radius:14px; margin-bottom:12px;
-    background:linear-gradient(160deg,#2A211D,#120E0B);
+    background:var(--red);
     display:flex; align-items:center; justify-content:center;
     transition:transform .2s ease;
   }
   .block-card:hover .icon-box, .block-card.touch-hover .icon-box{transform:scale(1.08) rotate(-3deg);}
-  .icon-box svg{width:28px; height:28px; stroke:var(--red); fill:none; stroke-width:4; stroke-linecap:round; stroke-linejoin:round;}
+  .icon-box svg{width:28px; height:28px; stroke:var(--ink); fill:none; stroke-width:4; stroke-linecap:round; stroke-linejoin:round;}
   .block-card h3{font-family:var(--font-display); font-weight:700; font-size:16px; color:var(--on-white); margin-bottom:6px;}
   .block-card p{font-size:12.5px; color:var(--on-white-soft); margin:0 0 8px; line-height:1.45;}
   .block-card .dates{font-family:var(--font-mono); font-size:10px; color:var(--on-white-soft); letter-spacing:.02em;}
