@@ -680,7 +680,7 @@
         "Développé militaire 3×8 à <b>22,5 kg</b>/main.",
         "Tractions 3×10 strict, tempo contrôlé.",
         "Wall balls 5×20 à <b>6 kg</b> : focus squat + réception, en fin de séance pour simuler la fatigue de fin d'Hyrox.",
-        "Gainage : planche 3×1 min, fermeture bassin jambes pliées 3×10 tenue 10 s, fermeture bassin jambes tendues 3×10 tenue 10 s." ]},
+        "Gainage :<br>• Planche 3×1 min<br>• Fermeture jambes pliées 3×10 tenue 10 s<br>• Fermeture jambes tendues 3×10 tenue 10 s" ]},
       mer:{ title:"Bas du corps : technique", duration:"~80 min", steps:[
         "Échauffement 8 min : mobilité cheville/genou + squat au poids du corps.",
         "Squat back 4×6 à <b>105 kg</b> : priorité technique.",
@@ -873,7 +873,9 @@
   function stravaTextFor(sess){
     var lines = [];
     sess.steps.forEach(function(s){
-      lines = lines.concat(stravaLinesFor(s));
+      s.replace(/<br\s*\/?>/gi, "\n").split("\n").forEach(function(part){
+        lines = lines.concat(stravaLinesFor(part));
+      });
     });
     return lines.join("\n");
   }
