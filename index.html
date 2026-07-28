@@ -294,6 +294,16 @@
   .done-btn:active{transform:translateY(0) scale(0.98); box-shadow:none;}
   .done-btn.is-done{background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.6);}
 
+  .strava-btn{
+    font-family:var(--font-mono); font-weight:700; font-size:11px; letter-spacing:.04em;
+    background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.5); border-radius:999px;
+    padding:8px 14px; cursor:pointer; margin:0 0 14px; display:inline-block;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .strava-btn:hover, .strava-btn.touch-hover{background:rgba(255,255,255,0.14); transform:translateY(-1px);}
+  .strava-btn:active{transform:translateY(0);}
+  .strava-btn:disabled{opacity:.75; cursor:default;}
+
   .progress-bar{height:7px; border-radius:999px; background:var(--cream); border:1px solid var(--cream-line); overflow:hidden; margin:14px 0 4px;}
   .progress-bar .fill{height:100%; background:var(--red); width:0%; transition:width .3s ease;}
   .progress-txt{font-family:var(--font-mono); font-size:11px; color:var(--ink-soft); text-align:right;}
@@ -538,7 +548,7 @@
   /* ---------- Survol tactile (mobile) ---------- */
   /* Reproduit au doigt les mêmes animations que :hover à la souris. */
   (function(){
-    var HOVER_SELECTOR = ".btn-brk, .tabs a, .block-card, .day-head, .done-btn, .reset-btn, .stat, .week-nav-btn";
+    var HOVER_SELECTOR = ".btn-brk, .tabs a, .block-card, .day-head, .done-btn, .strava-btn, .reset-btn, .stat, .week-nav-btn";
     var touchedEl = null;
     var startX = 0, startY = 0;
 
@@ -659,21 +669,21 @@
   /* ---------- Détails de séances par bloc ---------- */
   var SESSIONS = [
     { // Bloc 1 : Fondations & Technique
-      lun:{ title:"Haut du corps : technique", duration:"~80 min", steps:[
+      lun:{ title:"Haut du corps : technique", duration:"~90 min", steps:[
         "Échauffement 6-8 min : mobilité cheville/épaule + activation légère.",
-        "SkiErg : focus technique 4×250 m.",
-        "Rameur : focus technique 4×250 m (même volume que le SkiErg, chaîne postérieure).",
-        "Wall balls 5×15 à <b>6 kg</b> : focus squat + réception.",
-        "Développé militaire 3×8 à <b>18 kg</b>/main.",
-        "Tractions 3×8 strict, tempo contrôlé.",
-        "Gainage : planche 3×45 s, Pallof press 3×12/côté." ]},
-      mer:{ title:"Bas du corps : technique", duration:"~75 min", steps:[
+        "SkiErg : focus technique 4×300 m.",
+        "Rameur : focus technique 4×300 m (même volume que le SkiErg, chaîne postérieure).",
+        "Développé militaire 3×8 à <b>22,5 kg</b>/main.",
+        "Tractions 3×10 strict, tempo contrôlé.",
+        "Gainage : planche 3×45 s, Pallof press 3×12/côté.",
+        "Wall balls 5×20 à <b>6 kg</b> : focus squat + réception, en fin de séance pour simuler la fatigue de fin d'Hyrox." ]},
+      mer:{ title:"Bas du corps : technique", duration:"~80 min", steps:[
         "Échauffement 8 min : mobilité cheville/genou + squat au poids du corps.",
         "Squat back 4×6 à <b>105 kg</b> : priorité technique.",
         "Deadlift roumain 3×8 à <b>100 kg</b>.",
-        "Sled push 4×20 m à <b>110 kg</b> : focus position basse.",
-        "Sled pull 4×20 m à <b>65 kg</b> : focus prise.",
-        "Farmers carry 4×40 m à <b>20 kg</b>/main : focus posture.",
+        "Sled push 4×20 m à <b>130 kg</b> : focus position basse.",
+        "Sled pull 4×20 m à <b>80 kg</b> : focus prise.",
+        "Farmers carry 4×40 m à <b>24 kg</b>/main : focus posture.",
         "Sandbag lunges 3×10/jambe à <b>15 kg</b> : focus genou." ]},
       mar:{ title:"Qualité : VMA", duration:"~70 min", steps:[
         "Échauffement 15 min Z2 + 4 lignes droites progressives.",
@@ -681,8 +691,8 @@
         "Retour au calme 10 min + étirements.",
         "Objectif : poser le foncier, pas de recherche de perf." ]},
       jeu:{ title:"Circuit : technique", duration:"~65-80 min", steps:[
-        "1 km course (~5'00) + 1 station légère, ×4 à 6 stations max.",
-        "Exemple stations : SkiErg 500 m, Wall balls 50 à 6 kg, Farmers carry 100 m à 20 kg, Sled push 20 m à 110 kg, Burpee broad jumps 20 m technique (méthode step-up).",
+        "1 km course (~4'45) + 1 station légère, ×4 à 6 stations max.",
+        "Exemple stations : SkiErg 500 m, Wall balls 50 à 6 kg, Farmers carry 100 m à 24 kg, Sled push 20 m à 130 kg, Burpee broad jumps 20 m technique (méthode step-up).",
         "Transitions lentes, sans précipitation." ]},
       sam:{ title:"Seuil / tempo", duration:"~60 min", steps:[
         "Échauffement 15 min Z2.",
@@ -693,15 +703,15 @@
         "Aucune notion de vitesse : construire la base aérobie." ]}
     },
     { // Bloc 2 : Développement
-      lun:{ title:"Haut du corps : volume", duration:"~90 min", steps:[
+      lun:{ title:"Haut du corps : volume", duration:"~95 min", steps:[
         "Échauffement 6-8 min : mobilité cheville/épaule + activation légère.",
         "SkiErg 5×400 m à l'allure course cible.",
         "Rameur 5×400 m à l'allure course cible (même volume que le SkiErg).",
-        "Wall balls <span class=\"overload-tag\">Surcharge</span> 6×15-20 à <b>8 kg</b>.",
         "Tirage horizontal 4×8/bras à <b>32 kg</b>.",
-        "Développé militaire 4×6 à <b>22 kg</b>/main.",
-        "Tractions lestées 3×6 à <b>+12 kg</b>.",
-        "Gainage lesté 3×45 s." ]},
+        "Développé militaire 4×6 à <b>27,5 kg</b>/main.",
+        "Tractions lestées 3×6 à <b>+14 kg</b>.",
+        "Gainage lesté 3×45 s.",
+        "Wall balls <span class=\"overload-tag\">Surcharge</span> 6×15-20 à <b>8 kg</b>, en fin de séance pour simuler la fatigue de fin d'Hyrox." ]},
       mer:{ title:"Bas du corps : charge", duration:"~80 min", steps:[
         "Échauffement 8 min : mobilité cheville/genou + squat au poids du corps.",
         "Squat 4×5 à <b>117 kg</b>.",
@@ -807,6 +817,37 @@
     try{ localStorage.setItem(key, JSON.stringify(state)); }catch(e){}
   }
 
+  function stravaTextFor(sess){
+    return sess.steps
+      .map(function(s){ return s.replace(/<[^>]+>/g, ""); })
+      .filter(function(s){ return !/^Échauffement/i.test(s.trim()); })
+      .join("\n");
+  }
+
+  function copyStravaText(sess, btn){
+    var text = stravaTextFor(sess);
+    var original = btn.textContent;
+    function finish(ok){
+      btn.textContent = ok ? "Copié ✓" : "Erreur, réessaie";
+      btn.disabled = true;
+      setTimeout(function(){ btn.textContent = original; btn.disabled = false; }, 1600);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){ finish(true); }, function(){ finish(false); });
+    } else {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try{ ok = document.execCommand("copy"); }catch(e){ ok = false; }
+      document.body.removeChild(ta);
+      finish(ok);
+    }
+  }
+
   var openDayKey = null;
   var weekOffset = 0; // 0 = semaine en cours, négatif = semaines passées
 
@@ -863,6 +904,7 @@
             '<div class="dd-num">' + pad(i+1) + ' / ' + day.name + (sess.duration ? ' · ' + sess.duration : '') + '</div>' +
             '<h4>' + sess.title + '</h4>' +
             '<ul class="steps">' + stepsHtml + '</ul>' +
+            '<button type="button" class="strava-btn" data-day="' + day.key + '">Copier pour Strava</button>' +
             '<div class="notes-field">' +
               '<label for="note-' + day.key + '">Mes notes</label>' +
               '<textarea id="note-' + day.key + '" class="notes-input" placeholder="Charges réelles, sensations, ce que tu as changé...">' +
@@ -873,6 +915,11 @@
             '</button>' +
           '</div>';
         wrap.appendChild(detail);
+
+        detail.querySelector(".strava-btn").addEventListener("click", function(ev){
+          ev.stopPropagation();
+          copyStravaText(sess, ev.currentTarget);
+        });
 
         var noteInput = detail.querySelector(".notes-input");
         noteInput.value = dayState.note || "";
