@@ -817,11 +817,61 @@
     try{ localStorage.setItem(key, JSON.stringify(state)); }catch(e){}
   }
 
+  var STRAVA_DROP_PATTERNS = [
+    /^Échauffement\b/i,
+    /^Retour au calme\b/i,
+    /^Objectif\s*:/i,
+    /^Régularité\b/i,
+    /^Sensations\b/i,
+    /^Transitions\b/i,
+    /^Contrairement\b/i,
+    /^Jambes fraîches\b/i,
+    /^Aucune notion\b/i
+  ];
+
+  var STRAVA_CUE_WORDS = [
+    "focus", "priorité", "tempo contrôlé", "strict",
+    "sans précipitation", "en fin de séance", "sensations", "volume réduit"
+  ];
+
+  function stravaFinish(s){
+    s = s.trim().replace(/[\s,:.\-]+$/, "");
+    return s ? s + "." : "";
+  }
+
+  function stravaTrimCue(s){
+    var firstDigit = s.search(/\d/);
+    if (firstDigit === -1) return stravaFinish(s);
+    var cutAt = -1;
+    STRAVA_CUE_WORDS.forEach(function(word){
+      var idx = s.toLowerCase().indexOf(word, firstDigit);
+      if (idx !== -1 && (cutAt === -1 || idx < cutAt)) cutAt = idx;
+    });
+    if (cutAt === -1) return stravaFinish(s);
+    return stravaFinish(s.slice(0, cutAt));
+  }
+
+  function stravaLinesFor(raw){
+    var s = raw.replace(/<[^>]+>/g, "").trim();
+    for (var i = 0; i < STRAVA_DROP_PATTERNS.length; i++){
+      if (STRAVA_DROP_PATTERNS[i].test(s)) return [];
+    }
+    s = s.replace(/\s*\([^)]*\)/g, "").replace(/\s+\./g, ".").replace(/\s{2,}/g, " ").trim();
+    if (!s) return [];
+    var recup = s.match(/^(.*?),\s*(récup\b.*)$/i);
+    if (recup){
+      return [stravaTrimCue(recup[1]), stravaTrimCue(recup[2])].filter(Boolean);
+    }
+    var line = stravaTrimCue(s);
+    return line ? [line] : [];
+  }
+
   function stravaTextFor(sess){
-    return sess.steps
-      .map(function(s){ return s.replace(/<[^>]+>/g, ""); })
-      .filter(function(s){ return !/^Échauffement/i.test(s.trim()); })
-      .join("\n");
+    var lines = [];
+    sess.steps.forEach(function(s){
+      lines = lines.concat(stravaLinesFor(s));
+    });
+    return lines.join("\n");
   }
 
   function copyStravaText(sess, btn){
