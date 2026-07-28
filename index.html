@@ -293,6 +293,11 @@
   .done-btn:hover, .done-btn.touch-hover{transform:translateY(-2px) scale(1.03); box-shadow:0 6px 14px rgba(0,0,0,0.22);}
   .done-btn:active{transform:translateY(0) scale(0.98); box-shadow:none;}
   .done-btn.is-done{background:transparent; color:var(--ink); border:1px solid rgba(28,23,18,0.5);}
+  .done-check{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:15px; height:15px; margin-left:3px; border-radius:50%;
+    background:var(--ink); color:var(--red); font-size:9px; font-weight:700;
+  }
 
   .strava-btn{
     font-family:var(--font-mono); font-weight:700; font-size:11px; letter-spacing:.04em;
@@ -961,7 +966,7 @@
               '</textarea>' +
             '</div>' +
             '<button type="button" class="done-btn' + (isDone ? ' is-done' : '') + '" data-day="' + day.key + '">' +
-              (isDone ? "Fait ✓" : "Marquer fait") +
+              (isDone ? 'Fait <span class="done-check">✓</span>' : "Marquer fait") +
             '</button>' +
           '</div>';
         wrap.appendChild(detail);
