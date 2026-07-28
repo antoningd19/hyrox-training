@@ -47,7 +47,6 @@
     --red-tint:rgba(184,250,78,0.12);
     --on-red:var(--ink);
     --on-red-soft:rgba(28,23,18,0.65);
-    --green:#3F8F5F;
     --radius-lg:26px;
     --radius-md:18px;
     --font-display:'Fraunces', Georgia, serif;
@@ -248,8 +247,8 @@
   .state-dot::after{
     content:"✓"; font-size:12px; line-height:1; font-weight:700; color:transparent;
   }
-  .day.done .state-dot{background:var(--green); border-color:var(--green);}
-  .day.done .state-dot::after{color:#fff;}
+  .day.done .state-dot{background:var(--red); border-color:var(--red);}
+  .day.done .state-dot::after{color:var(--ink);}
   .day.rest .state-dot{visibility:hidden;}
   .chevron{font-family:var(--font-mono); font-size:13px; color:var(--on-white-soft); transition:transform .2s ease; flex:0 0 auto;}
   .day.open .chevron{transform:rotate(90deg); color:var(--red);}
