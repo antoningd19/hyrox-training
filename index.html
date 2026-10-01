@@ -576,6 +576,7 @@
 
   /* ---------- Compte à rebours ---------- */
   var RACE_DATE = new Date(2026, 9, 3, 8, 0, 0);
+  var RACE_EVE_ISO = "2026-10-02"; // vendredi avant la course : seule exception au repos du vendredi
 
   var cdEls = {
     days: document.getElementById("cd-days"),
@@ -776,7 +777,15 @@
         "Semaine du 3 octobre : jour J, tu cours le Hyrox (~1h05-1h15). Stratégie détaillée plus bas." ]},
       dim:{ title:"Récupération", duration:"~20 min ou repos", steps:[
         "Semaine normale : repos ou 20 min très facile.",
-        "Semaine du 3 octobre : repos total, tu l'as fait." ]}
+        "Semaine du 3 octobre : repos total, tu l'as fait." ]},
+      ven:{ title:"Activation veille de course", duration:"~30 min", steps:[
+        "4 tours de piste à <b>5'15/km</b>.",
+        "5 min de mobilité : hanches, chevilles, épaules, quelques fentes et squats au poids du corps.",
+        "2 × 200 m à <b>4'20/km</b>.",
+        "2 × 150 m à <b>3'50/km</b>.",
+        "2 × 100 m à <b>3'20/km</b>.",
+        "Récupération complète en marchant entre chaque accélération (1 à 2 min).",
+        "5 min de retour au calme en marchant ou en trottinant." ]}
     }
   ];
 
@@ -800,6 +809,7 @@
     var x = new Date(d.getFullYear(), d.getMonth(), d.getDate());
     return x.getFullYear() + "-" + pad(x.getMonth()+1) + "-" + pad(x.getDate());
   }
+  function isRaceEveDate(d){ return isoDate(d) === RACE_EVE_ISO; }
   function mondayOf(d){
     var day = d.getDay();
     var diffToMonday = (day === 0) ? -6 : (1 - day);
@@ -937,10 +947,14 @@
 
     WEEK_TEMPLATE.forEach(function(day, i){
       var wrap = document.createElement("div");
+      var dayDate = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + i);
+      var isRaceEve = day.rest && isRaceEveDate(dayDate);
+      var isRest = day.rest && !isRaceEve;
+      var dayDesc = isRaceEve ? "Activation veille de course" : day.desc;
       var dayState = getDayState(state, day.key);
       var isDone = dayState.done;
       var isOpen = openDayKey === day.key;
-      wrap.className = "day" + (day.rest ? " rest" : "") + (isDone ? " done" : "") + (isOpen ? " open" : "");
+      wrap.className = "day" + (isRest ? " rest" : "") + (isDone ? " done" : "") + (isOpen ? " open" : "");
 
       var head = document.createElement("button");
       head.type = "button";
@@ -948,13 +962,13 @@
       head.setAttribute("aria-expanded", isOpen ? "true" : "false");
       head.innerHTML =
         '<span class="day-tag">' + day.name + '</span>' +
-        '<span class="day-title">' + day.desc + '</span>' +
+        '<span class="day-title">' + dayDesc + '</span>' +
         '<span class="state-dot"></span>' +
         '<span class="chevron">→</span>';
 
       wrap.appendChild(head);
 
-      if (!day.rest){
+      if (!isRest){
         var detail = document.createElement("div");
         detail.className = "day-detail";
         var sess = sessions[day.key];
@@ -1002,11 +1016,14 @@
       listEl.appendChild(wrap);
     });
 
-    updateProgress(key, state);
+    updateProgress(key, state, monday);
   }
 
-  function updateProgress(key, state){
-    var trainable = WEEK_TEMPLATE.filter(function(d){ return !d.rest; });
+  function updateProgress(key, state, monday){
+    var trainable = WEEK_TEMPLATE.filter(function(d, i){
+      var date = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + i);
+      return !d.rest || isRaceEveDate(date);
+    });
     var done = trainable.filter(function(d){ return getDayState(state, d.key).done; }).length;
     var total = trainable.length;
     var pct = Math.round((done/total) * 100);
@@ -1027,7 +1044,7 @@
 
     while (cursor <= end){
       var dayKey = WEEKDAY_TO_KEY[cursor.getDay()];
-      if (dayKey !== "ven"){
+      if (dayKey !== "ven" || isRaceEveDate(cursor)){
         var mkey = weekStorageKey(mondayOf(cursor));
         if (!stateCache[mkey]) stateCache[mkey] = loadWeekState(mkey);
         total++;
