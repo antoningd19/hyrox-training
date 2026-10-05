@@ -2,6 +2,13 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<script>
+  // Hyrox terminé : sans choix enregistré, on ouvre la prépa semi par défaut.
+  try{
+    var prepaMode = localStorage.getItem("prepa-mode");
+    if (prepaMode === "semi" || (!prepaMode && new Date() > new Date(2026, 9, 4))) location.replace("semi.html" + location.hash);
+  }catch(e){}
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
 <title>Hyrox Bordeaux · J-79</title>
 <meta name="description" content="Suivi de prépa Hyrox Bordeaux : programme, séances détaillées et compte à rebours.">
@@ -83,11 +90,6 @@
     border:1px solid var(--cream-line); border-radius:999px;
     padding:9px 8px 9px 16px;
   }
-  .logo{
-    font-family:var(--font-mono); font-weight:700; font-size:13px; letter-spacing:.02em;
-    display:flex; align-items:center; gap:6px; color:var(--ink); white-space:nowrap;
-  }
-  .logo .sq{width:8px; height:8px; background:var(--red); display:inline-block; border-radius:2px;}
   .nav-right{display:flex; align-items:center; gap:8px;}
   .btn-brk{
     font-family:var(--font-mono); font-weight:700; font-size:12px; letter-spacing:.03em;
@@ -369,13 +371,26 @@
 
     footer{padding-top:18px;}
   }
+
+  /* ---------- Bascule Hyrox / Semi ---------- */
+  nav.pill{padding-left:8px;}
+  .mode-switch{display:inline-flex; gap:2px; background:var(--cream-line); border-radius:999px; padding:3px;}
+  .mode-opt{
+    font-family:var(--font-mono); font-weight:700; font-size:11px; letter-spacing:.04em; text-transform:uppercase;
+    text-decoration:none; color:var(--ink); padding:6px 11px; border-radius:999px;
+    transition:background-color .18s ease, color .18s ease;
+  }
+  .mode-opt.is-on{background:var(--white); color:var(--on-white);}
 </style>
 </head>
 <body>
 
 <div class="nav-shell">
   <nav class="pill">
-    <div class="logo"><span>HYROX</span><span class="sq"></span><span>BDX</span></div>
+    <div class="mode-switch" aria-label="Choix de la prépa">
+      <a class="mode-opt is-on" href="index.html" data-mode="hyrox" aria-current="page">Hyrox</a>
+      <a class="mode-opt" href="semi.html" data-mode="semi">Semi</a>
+    </div>
     <div class="nav-right">
       <a class="btn-brk" href="#compte-a-rebours"><span class="brk">[</span>&nbsp;<span id="nav-days">J-··</span>&nbsp;→<span class="brk">]</span></a>
     </div>
@@ -569,6 +584,13 @@
     document.addEventListener("touchend", clearTouch, { passive:true });
     document.addEventListener("touchcancel", clearTouch, { passive:true });
   })();
+
+  /* ---------- Bascule Hyrox / Semi ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll(".mode-opt"), function(a){
+    a.addEventListener("click", function(){
+      try{ localStorage.setItem("prepa-mode", a.getAttribute("data-mode")); }catch(e){}
+    });
+  });
 
   /* ---------- Utils ---------- */
   function pad(n){ return String(n).padStart(2,"0"); }
