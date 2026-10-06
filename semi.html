@@ -384,18 +384,19 @@
 
   /* ---------- Calculateur ---------- */
   .calc-title{font-family:var(--font-display); font-weight:700; font-size:16px; color:var(--on-white); margin:0 0 12px;}
-  .calc-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:6px;}
-  @media (max-width:420px){ .calc-grid{grid-template-columns:1fr;} }
+  /* Les champs se partagent la largeur de leur colonne : rien ne dépasse de la carte, quelle que soit la largeur d'écran. */
+  .calc-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:14px; margin-bottom:6px;}
+  @media (max-width:359px){ .calc-grid{grid-template-columns:minmax(0,1fr);} }
   .calc-label{font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.06em; color:var(--on-white-soft); margin-bottom:6px; display:block;}
-  .calc-row{display:flex; align-items:center; gap:6px;}
+  .calc-row{display:flex; align-items:center; gap:5px;}
   .calc-row input{
-    width:58px; font-family:var(--font-mono); font-size:18px; font-weight:700; text-align:center;
-    background:var(--cream); color:var(--ink); border:1px solid var(--cream-line); border-radius:12px; padding:9px 4px;
+    flex:1 1 0; min-width:0; width:auto; font-family:var(--font-mono); font-size:17px; font-weight:700; text-align:center;
+    background:var(--cream); color:var(--ink); border:1px solid var(--cream-line); border-radius:12px; padding:9px 2px;
     -moz-appearance:textfield; appearance:textfield;
   }
   .calc-row input::-webkit-outer-spin-button, .calc-row input::-webkit-inner-spin-button{-webkit-appearance:none; margin:0;}
   .calc-row input:focus{outline:2px solid var(--red); outline-offset:1px;}
-  .calc-row .u{font-family:var(--font-mono); font-size:12px; color:var(--on-white-soft);}
+  .calc-row .u{flex:0 0 auto; font-family:var(--font-mono); font-size:12px; color:var(--on-white-soft);}
   #gels .strategy .n{min-width:48px; text-align:center;}
 </style>
 </head>
