@@ -393,15 +393,9 @@
     background:var(--cream); color:var(--ink); border:1px solid var(--cream-line); border-radius:12px; padding:9px 4px;
     -moz-appearance:textfield; appearance:textfield;
   }
-  .calc-row input.wide{width:76px;}
   .calc-row input::-webkit-outer-spin-button, .calc-row input::-webkit-inner-spin-button{-webkit-appearance:none; margin:0;}
   .calc-row input:focus{outline:2px solid var(--red); outline-offset:1px;}
   .calc-row .u{font-family:var(--font-mono); font-size:12px; color:var(--on-white-soft);}
-  .calc-result{
-    background:var(--red); color:var(--ink); border-radius:16px; padding:12px 14px; margin-top:14px;
-    font-family:var(--font-mono); font-size:13px; line-height:1.5;
-  }
-  .calc-result b{font-size:17px;}
   #gels .strategy .n{min-width:48px; text-align:center;}
 </style>
 </head>
@@ -422,7 +416,6 @@
       <a href="#compte-a-rebours">Compte à rebours</a>
       <a href="#suivi">Séances</a>
       <a href="#programme">Programme</a>
-      <a href="#allures">Allures</a>
       <a href="#calculateur">Calculateur</a>
       <a href="#gels">Gels</a>
       <a href="#strategie">Stratégie</a>
@@ -464,7 +457,7 @@
   <section id="suivi">
     <p class="eyebrow">Cette semaine</p>
     <h2 class="section-title">Quatre sorties, <span class="accent">un plan</span>.</h2>
-    <p class="section-sub">Touche une séance pour voir le détail. Les 4 sorties comptent, les jours libres (gym, renfo, repos) sont en option. Tu peux déplacer les jours : garde juste 48 h entre deux séances dures.</p>
+    <p class="section-sub">Touche une séance pour voir le détail. Les 4 sorties comptent dans le suivi ; la gym (lundi, mardi, jeudi) et le repos sont là pour caler la semaine. Le mardi, footing et gym se cumulent.</p>
 
     <div class="week-card" style="margin-bottom:10px;">
       <div class="week-head">
@@ -496,42 +489,6 @@
     <h2 class="section-title">De l'Hyrox au <span class="accent">semi</span>.</h2>
     <p class="section-sub">Quatre blocs, cinq semaines, un jour J.</p>
     <div class="block-grid" id="blocks"></div>
-  </section>
-
-  <section id="allures">
-    <p class="eyebrow">Allures</p>
-    <h2 class="section-title">Mes <span class="accent">allures</span>.</h2>
-    <p class="section-sub">Calées sur mes chronos récents : 6,11 km en 24:00 et des 10 km sous 45 min.</p>
-    <div class="card">
-      <div class="table-wrap">
-      <table>
-        <thead><tr><th>Zone</th><th>Usage</th><th>Allure</th></tr></thead>
-        <tbody>
-          <tr><td>Endurance (EF)</td><td>Footings, sortie longue</td><td class="target">5'15-5'45</td></tr>
-          <tr><td>Allure semi</td><td>Blocs spécifiques, jour J</td><td class="target">4'28</td></tr>
-          <tr><td>Seuil</td><td>Fractionné long</td><td class="target">4'12-4'18</td></tr>
-          <tr><td>VMA</td><td>800 m - 1000 m</td><td class="target">3'50-4'00</td></tr>
-          <tr><td>Lignes droites</td><td>20 s progressives</td><td class="target">~3'40</td></tr>
-        </tbody>
-      </table>
-      </div>
-    </div>
-
-    <div class="card" style="margin-top:10px;">
-      <div class="table-wrap">
-      <table>
-        <thead><tr><th>Passage</th><th>Objectif 4'28</th><th>Limite 4'30</th></tr></thead>
-        <tbody>
-          <tr><td>5 km</td><td class="target">22:20</td><td class="target">22:30</td></tr>
-          <tr><td>10 km</td><td class="target">44:40</td><td class="target">45:00</td></tr>
-          <tr><td>15 km</td><td class="target">1:07:00</td><td class="target">1:07:30</td></tr>
-          <tr><td>20 km</td><td class="target">1:29:20</td><td class="target">1:30:00</td></tr>
-          <tr><td>21,1 km</td><td class="target">1:34:14</td><td class="target">1:34:56</td></tr>
-        </tbody>
-      </table>
-      </div>
-      <p class="note">À 4'30 tout pile, il ne reste que 4 secondes de marge. Vise <b>4'28</b> de moyenne, ce qui laisse environ 45 s pour le pont de pierre, les virages et le slalom entre coureurs.</p>
-    </div>
   </section>
 
   <section id="calculateur">
@@ -571,30 +528,6 @@
       <p class="note" id="calc-watch"></p>
     </div>
 
-    <div class="card" style="margin-top:10px;">
-      <h3 class="calc-title">Prédiction à partir d'un chrono</h3>
-      <div class="calc-grid">
-        <div>
-          <span class="calc-label">Distance courue</span>
-          <div class="calc-row">
-            <input type="number" inputmode="decimal" min="1" max="42.2" step="0.01" class="wide" id="pred-km" value="6.11" aria-label="Distance en km">
-            <span class="u">km</span>
-          </div>
-        </div>
-        <div>
-          <span class="calc-label">Temps</span>
-          <div class="calc-row">
-            <input type="number" inputmode="numeric" min="0" max="5" id="pred-h" value="0" aria-label="Temps, heures">
-            <span class="u">h</span>
-            <input type="number" inputmode="numeric" min="0" max="59" id="pred-m" value="24" aria-label="Temps, minutes">
-            <span class="u">'</span>
-            <input type="number" inputmode="numeric" min="0" max="59" id="pred-s" value="0" aria-label="Temps, secondes">
-          </div>
-        </div>
-      </div>
-      <div class="calc-result" id="pred-result">chargement</div>
-      <p class="note">Formule de Riegel, la référence classique. Elle suppose une prépa adaptée à la distance : à partir d'un chrono court (5-6 km), elle est souvent un peu optimiste pour un semi. Un 10 km ou la séance clé du 29 octobre donnent une estimation plus fiable.</p>
-    </div>
   </section>
 
   <section id="gels">
@@ -607,7 +540,7 @@
         <li><span class="n">02</span> <span><b>Classique ou isotonique :</b> le gel classique est concentré, il faut 2-3 gorgées d'eau derrière. L'isotonique est plus liquide et se prend sans eau, mais il est plus gros. Pour commencer, choisis l'isotonique.</span></li>
         <li><span class="n">03</span> <span><b>Caféine :</b> seulement si tu l'as testée à l'entraînement, et plutôt pour le 2e gel.</span></li>
         <li><span class="n">04</span> <span><b>Achat :</b> prends 5-6 gels de la même marque et du même goût dès cette semaine. Le jour J, uniquement des gels déjà testés.</span></li>
-        <li><span class="n">05</span> <span><b>Tests à l'entraînement :</b> dim. 18 oct (1 gel à 40 min), dim. 25 oct (2 gels comme le jour J), jeu. 29 oct (1 gel pendant la séance clé). Ils sont notés dans les séances.</span></li>
+        <li><span class="n">05</span> <span><b>Tests à l'entraînement :</b> dim. 18 oct (1 gel à 40 min), dim. 25 oct (2 gels comme le jour J), ven. 30 oct (1 gel pendant la séance clé). Ils sont notés dans les séances.</span></li>
       </ol>
     </div>
     <div class="card" style="margin-top:10px;">
@@ -653,7 +586,7 @@
         <p>Ex-gymnaste niveau national, 1m83 / 83 kg. Sort de 11 semaines de prépa Hyrox (Bordeaux, 3 octobre, <b>1h10:32</b>) : grosse base physique, mais seulement 5 semaines pour passer d'un format mixte à 21 km d'allure continue.</p>
         <p><b>Ce que dit l'Hyrox :</b> 32:33 de course cumulée, <b>72e temps de course</b> (144e au général). Les courses 2 à 7 (4'08, 4'20, 4'29, 4'34, 4'27, 4'27) donnent environ <b>4'25/km de moyenne entre deux stations</b>, sans craquer en fin de course, avec un dernier tour bouclé en 3'46. Autrement dit, l'allure semi est déjà tenue sur jambes cassées : la course est un point fort, il reste à l'étirer sur 21 km.</p>
         <p><b>Priorités :</b> (1) récupérer de l'Hyrox sans se blesser ; (2) habituer les jambes à tenir 4'28 longtemps ; (3) arriver frais le 8 novembre.</p>
-        <p><b>Muscu et gym :</b> plus de muscu lourde des jambes, elles sont réservées à la course. La gym reprend sur les jours libres (1 à 2 séances par semaine) en évitant les grosses réceptions la veille d'une séance dure, et seulement en technique la dernière semaine.</p>
+        <p><b>Course et gym :</b> gym le lundi, le mardi et le jeudi. Les séances dures de course tombent les jours sans gym (VMA ou seuil le mercredi, allure semi le vendredi, sortie longue le dimanche), le mardi un footing facile s'ajoute à la gym. Plus de muscu lourde des jambes, et gym en technique uniquement la dernière semaine.</p>
       </div>
     </div>
   </section>
@@ -752,9 +685,9 @@
     { name:"Récupération & reprise", icon:"pulse", start:new Date(2026,9,5), end:new Date(2026,9,11),
       desc:"Récupérer de l'Hyrox : footings faciles, un premier rappel d'allure semi. Pas de muscu des jambes." },
     { name:"Développement", icon:"bars", start:new Date(2026,9,12), end:new Date(2026,9,25),
-      desc:"Volume en hausse (45 puis 50 km), VMA et seuil le mardi, blocs d'allure semi de plus en plus longs. Premiers tests de gels." },
+      desc:"Volume en hausse (45 puis 50 km), VMA ou seuil le mercredi, blocs d'allure semi de plus en plus longs. Premiers tests de gels." },
     { name:"Spécifique", icon:"stopwatch", start:new Date(2026,9,26), end:new Date(2026,10,1),
-      desc:"Dernière grosse semaine : 12 km à allure semi le jeudi, la séance test. Sortie longue raccourcie." },
+      desc:"Dernière grosse semaine : 12 km à allure semi le vendredi, la séance test. Sortie longue raccourcie." },
     { name:"Affûtage & Jour J", icon:"flag", start:new Date(2026,10,2), end:new Date(2026,10,8),
       desc:"Volume divisé par deux, rappels d'allure pour garder le rythme. Course le 8 novembre." }
   ];
@@ -803,141 +736,136 @@
   }
 
   /* ---------- Séances, semaine par semaine ---------- */
-  var REST_AFTER_LONG = { title:"Repos ou gym légère", duration:"Libre", steps:[
-    "Lendemain de sortie longue : repos complet conseillé.",
-    "Ou gym technique, sans réceptions lourdes.",
-    "10 min de mobilité mollets/hanches si les jambes sont raides." ]};
-  var GYM_OR_RENFO = { title:"Gym ou renfo course", duration:"~30-60 min", steps:[
-    "Gym : ok, en évitant les réceptions lourdes (saltos, sauts en contrebas).",
-    "Ou renfo course 25 min :<br>• Gainage planche 3×45 s + latéral 3×30 s/côté<br>• Mollets excentriques sur une marche 3×12/jambe<br>• Pont fessier unipodal 3×10/jambe<br>• Soulevé de terre roumain léger 3×8 aux haltères",
-    "Pas de charges lourdes pour les jambes : elles sont réservées à la course." ]};
-  var REST_BEFORE_WEEKEND = { title:"Repos ou gym", duration:"Libre", steps:[
-    "Repos complet conseillé, 2 jours avant la sortie longue.",
-    "Ou gym légère, technique uniquement." ]};
+  // type "run" = sortie comptée dans le suivi ; "gym" et "rest" = organisation de la semaine.
+  var GYM_MON = { type:"gym", title:"Gym", duration:"Gym", steps:[
+    "Séance de gym habituelle, pas de course aujourd'hui.",
+    "Lendemain de sortie longue : écoute tes jambes et allège les réceptions si elles sont lourdes.",
+    "En fin de séance, 10 min de renfo course :<br>• Mollets excentriques sur une marche 3×12/jambe<br>• Pont fessier unipodal 3×10/jambe" ]};
+  var GYM_THU = { type:"gym", title:"Gym", duration:"Gym", steps:[
+    "Séance de gym habituelle, pas de course aujourd'hui.",
+    "Veille de la séance d'allure semi : pas de grosses réceptions (saltos, sauts en contrebas)." ]};
+  var REST_SAT = { type:"rest", title:"Repos complet", duration:"Repos", steps:[
+    "Le seul jour sans sport de la semaine : repos complet.",
+    "Jambes fraîches pour la sortie longue de demain." ]};
+  function easyRunTue(minutes, strides){
+    return { type:"run", title:"Footing EF + gym", duration:"~" + minutes + " min + gym", steps:[
+      minutes + " min en endurance fondamentale à <b>5'20-5'40/km</b>.",
+      strides + " lignes droites de 20 s, retour en marchant.",
+      "Si footing et gym sont rapprochés : cours d'abord, gym ensuite. Le footing reste facile, c'est du volume." ]};
+  }
 
   var SESSIONS = [
     { // Semaine 1 : Récupération & reprise (5-11 oct)
-      lun:{ title:"Repos complet", duration:"Repos", steps:[
+      lun:{ type:"rest", title:"Repos complet", duration:"Repos", steps:[
         "Lendemain de course et fortes courbatures : repos complet, aucun sport.",
         "Marche 20-30 min si tu veux bouger, ça aide à évacuer les courbatures.",
         "Bien manger, bien dormir : c'est ce qui fait récupérer." ]},
-      mar:{ title:"Footing de déblocage", duration:"~30 min", steps:[
+      mar:{ type:"run", title:"Footing de déblocage", duration:"~30 min", steps:[
         "30 min très facile à <b>5'45-6'00/km</b>, en aisance respiratoire totale.",
         "Si les courbatures sont encore fortes : 30 min de vélo ou de marche rapide à la place.",
-        "Sensations uniquement, pas d'allure à respecter." ]},
-      mer:{ title:"Gym légère ou mobilité", duration:"~30-45 min", steps:[
-        "Reprise de la gym possible : technique, souplesse, gainage, sans sauts ni réceptions.",
-        "Sinon 20 min de mobilité : hanches, chevilles, mollets.",
-        "Pas de renfo des jambes cette semaine." ]},
-      jeu:{ title:"Footing + lignes droites", duration:"~45 min", steps:[
+        "Gym : seulement si les courbatures le permettent, en version légère (technique, souplesse)." ]},
+      mer:{ type:"run", title:"Footing + lignes droites", duration:"~45 min", steps:[
         "40 min en endurance fondamentale à <b>5'20-5'40/km</b>.",
         "6 lignes droites de 20 s : accélération progressive jusqu'à ~3'40/km, retour en marchant.",
         "Objectif : relancer la foulée sans fatiguer." ]},
-      ven:{ title:"Repos", duration:"Libre", steps:[
-        "Repos complet conseillé, ou gym légère si tu te sens frais.",
-        "Les jambes doivent être fraîches pour le rappel d'allure de samedi." ]},
-      sam:{ title:"Rappel allure semi : 3 × 2 km", duration:"~50 min", steps:[
+      jeu:{ type:"gym", title:"Gym légère", duration:"Gym", steps:[
+        "Gym légère : technique, souplesse, gainage, sans sauts ni réceptions lourdes.",
+        "Pas de renfo des jambes cette semaine." ]},
+      ven:{ type:"run", title:"Rappel allure semi : 3 × 2 km", duration:"~50 min", steps:[
         "Échauffement 15 min EF.",
         "3 × 2 km à <b>4'30/km</b>, récup 2 min trot.",
         "Retour au calme 10 min.",
         "Objectif : retrouver la sensation de l'allure cible, ça doit rester confortable." ]},
-      dim:{ title:"Sortie longue", duration:"~1h10", steps:[
+      sam: REST_SAT,
+      dim:{ type:"run", title:"Sortie longue", duration:"~1h10", steps:[
         "1h05 à 1h10 en endurance fondamentale à <b>5'20-5'40/km</b> (~13 km).",
         "Terrain plat, allure de conversation." ]}
     },
     { // Semaine 2 : Développement (12-18 oct)
-      lun: REST_AFTER_LONG,
-      mar:{ title:"VMA : 6 × 1000 m", duration:"~60 min", steps:[
+      lun: GYM_MON,
+      mar: easyRunTue(35, 6),
+      mer:{ type:"run", title:"VMA : 6 × 1000 m", duration:"~60 min", steps:[
         "Échauffement 20 min EF + 4 lignes droites.",
         "6 × 1000 m à <b>3'55-4'00/km</b>, récup 2 min trot.",
         "Retour au calme 10 min.",
         "Régularité : le dernier 1000 m aussi rapide que le premier." ]},
-      mer: GYM_OR_RENFO,
-      jeu:{ title:"Allure semi : 3 × 2,5 km", duration:"~60 min", steps:[
+      jeu: GYM_THU,
+      ven:{ type:"run", title:"Allure semi : 3 × 2,5 km", duration:"~60 min", steps:[
         "Échauffement 15 min EF.",
         "3 × 2,5 km à <b>4'28/km</b>, récup 2'30 trot.",
         "Retour au calme 10 min.",
         "Objectif : respiration contrôlée, tu dois pouvoir dire quelques mots." ]},
-      ven: REST_BEFORE_WEEKEND,
-      sam:{ title:"Footing + lignes droites", duration:"~40 min", steps:[
-        "35 min EF à <b>5'20-5'40/km</b>.",
-        "6 lignes droites de 20 s, retour en marchant." ]},
-      dim:{ title:"Sortie longue + test gel", duration:"~1h20", steps:[
+      sam: REST_SAT,
+      dim:{ type:"run", title:"Sortie longue + test gel", duration:"~1h20", steps:[
         "1h20 en EF à <b>5'15-5'40/km</b> (~15 km).",
         "Gel <span class=\"overload-tag\">Test</span> : 1 gel à 40 min avec quelques gorgées d'eau, pour vérifier que ça passe bien." ]}
     },
     { // Semaine 3 : Développement, pic de volume (19-25 oct)
-      lun: REST_AFTER_LONG,
-      mar:{ title:"Seuil : 4 × 2 km", duration:"~65 min", steps:[
+      lun: GYM_MON,
+      mar: easyRunTue(40, 6),
+      mer:{ type:"run", title:"Seuil : 4 × 2 km", duration:"~65 min", steps:[
         "Échauffement 20 min EF + 4 lignes droites.",
         "4 × 2 km à <b>4'12-4'18/km</b>, récup 1'30 trot.",
         "Retour au calme 10 min.",
         "Objectif : dur mais contrôlé, jamais à fond." ]},
-      mer: GYM_OR_RENFO,
-      jeu:{ title:"Allure semi : 3 × 3 km", duration:"~65 min", steps:[
+      jeu: GYM_THU,
+      ven:{ type:"run", title:"Allure semi : 3 × 3 km", duration:"~65 min", steps:[
         "Échauffement 15 min EF.",
         "3 × 3 km à <b>4'28/km</b>, récup 2 min trot.",
         "Retour au calme 10 min." ]},
-      ven: REST_BEFORE_WEEKEND,
-      sam:{ title:"Footing + lignes droites", duration:"~35 min", steps:[
-        "30 à 35 min EF à <b>5'20-5'40/km</b>.",
-        "5 lignes droites de 20 s, retour en marchant." ]},
-      dim:{ title:"Sortie longue spécifique", duration:"~1h40", steps:[
+      sam: REST_SAT,
+      dim:{ type:"run", title:"Sortie longue spécifique", duration:"~1h40", steps:[
         "10 km en EF à <b>5'15-5'30/km</b>.",
         "2 × 3 km à <b>4'30/km</b>, récup 2 min trot : l'allure semi sur jambes fatiguées.",
         "2 km de retour au calme (~19 km au total).",
         "Gels <span class=\"overload-tag\">Test jour J</span> : 2 gels comme en course, vers 35 min et vers 1h05." ]}
     },
     { // Semaine 4 : Spécifique (26 oct - 1er nov)
-      lun: REST_AFTER_LONG,
-      mar:{ title:"VMA : 8 × 800 m", duration:"~55 min", steps:[
+      lun: GYM_MON,
+      mar: easyRunTue(30, 4),
+      mer:{ type:"run", title:"VMA : 8 × 800 m", duration:"~55 min", steps:[
         "Échauffement 20 min EF + 4 lignes droites.",
         "8 × 800 m à <b>3'50-3'55/km</b>, récup 1'30 trot.",
         "Retour au calme 10 min." ]},
-      mer:{ title:"Gym ou renfo course", duration:"~30-60 min", steps:[
-        GYM_OR_RENFO.steps[0],
-        GYM_OR_RENFO.steps[1],
-        "Dernière séance de renfo de la prépa, en version allégée (2 séries au lieu de 3)." ]},
-      jeu:{ title:"Séance clé : 3 × 4 km allure semi", duration:"~75 min", steps:[
+      jeu: GYM_THU,
+      ven:{ type:"run", title:"Séance clé : 3 × 4 km allure semi", duration:"~75 min", steps:[
         "Échauffement 15 min EF + 3 lignes droites.",
         "3 × 4 km à <b>4'28/km</b>, récup 2 min trot.",
         "Retour au calme 10 min.",
         "Gel <span class=\"overload-tag\">Test</span> : 1 gel pendant la 2e récup, pour t'entraîner à le prendre à allure rapide.",
         "Objectif : 12 km à l'allure cible en contrôle. Si ça passe, le sub 1h35 est dans les jambes." ]},
-      ven: REST_BEFORE_WEEKEND,
-      sam:{ title:"Footing + lignes droites", duration:"~30 min", steps:[
-        "30 min EF à <b>5'20-5'40/km</b>.",
-        "4 lignes droites de 20 s." ]},
-      dim:{ title:"Sortie longue allégée", duration:"~1h15", steps:[
+      sam: REST_SAT,
+      dim:{ type:"run", title:"Sortie longue allégée", duration:"~1h15", steps:[
         "14 km en EF à <b>5'15-5'40/km</b>.",
-        "Rien de plus : la grosse séance était jeudi." ]}
+        "Rien de plus : la grosse séance était vendredi." ]}
     },
     { // Semaine 5 : Affûtage & Jour J (2-8 nov)
-      lun: REST_AFTER_LONG,
-      mar:{ title:"Rappel vitesse : 5 × 600 m", duration:"~45 min", steps:[
+      lun:{ type:"gym", title:"Gym légère", duration:"Gym", steps:[
+        "Gym en technique et souplesse uniquement, aucune réception lourde.",
+        "Plus de renfo cette semaine." ]},
+      mar:{ type:"gym", title:"Gym légère, pas de course", duration:"Gym", steps:[
+        "Pas de footing aujourd'hui : on garde de la fraîcheur.",
+        "Gym en technique et souplesse uniquement." ]},
+      mer:{ type:"run", title:"Rappel vitesse : 5 × 600 m", duration:"~45 min", steps:[
         "Échauffement 15 min EF + 3 lignes droites.",
         "5 × 600 m à <b>4'00/km</b>, récup 1'30 trot.",
         "Retour au calme 10 min.",
         "Sensations : vif et facile, aucune fatigue." ]},
-      mer:{ title:"Gym très légère ou repos", duration:"Libre", steps:[
-        "Plus de renfo cette semaine.",
-        "Gym : technique et souplesse uniquement, aucune réception lourde.",
-        "Ou repos complet." ]},
-      jeu:{ title:"Rappel allure semi : 2 × 2 km", duration:"~45 min", steps:[
-        "Échauffement 15 min EF.",
-        "2 × 2 km à <b>4'28/km</b>, récup 2 min trot.",
-        "Retour au calme 10 min.",
-        "Objectif : mémoriser la sensation de l'allure, c'est elle que tu tiendras dimanche." ]},
-      ven:{ title:"Repos complet", duration:"Repos", steps:[
-        "Repos complet, pas de gym.",
+      jeu:{ type:"gym", title:"Gym très légère ou repos", duration:"Libre", steps:[
+        "Gym très légère ou repos complet.",
         "Retrait du dossard si possible, prépare tes affaires et tes 2 gels.",
         "Repas un peu plus riches en féculents à partir d'aujourd'hui." ]},
-      sam:{ title:"Activation veille de course", duration:"~25 min", steps:[
+      ven:{ type:"run", title:"Rappel allure semi : 2 × 1,5 km", duration:"~40 min", steps:[
+        "Échauffement 15 min EF.",
+        "2 × 1,5 km à <b>4'28/km</b>, récup 2 min trot.",
+        "Retour au calme 10 min.",
+        "Objectif : mémoriser la sensation de l'allure, c'est elle que tu tiendras dimanche." ]},
+      sam:{ type:"run", title:"Activation veille de course", duration:"~25 min", steps:[
         "15 min très facile à <b>5'40/km</b>.",
         "3 × 100 m progressifs jusqu'à l'allure semi, retour en marchant.",
         "5 min de mobilité : hanches, chevilles.",
         "Dîner : féculents, peu de fibres et de gras, rien de nouveau. Couché tôt." ]},
-      dim:{ title:"Jour J : semi de Bordeaux", duration:"Sous 1h35", steps:[
+      dim:{ type:"run", title:"Jour J : semi de Bordeaux", duration:"Sous 1h35", steps:[
         "Petit-déj 3 h avant le départ, le même que d'habitude, riche en glucides.",
         "Échauffement 20 min avant le départ : 10 min de trot + 3 lignes droites.",
         "Course à <b>4'28/km</b> de moyenne, gels aux km 7-8 et 14-15. Stratégie détaillée plus bas." ]}
@@ -945,15 +873,15 @@
   ];
 
   var WEEK_TEMPLATE = [
-    { key:"lun", name:"LUN", opt:true },
+    { key:"lun", name:"LUN" },
     { key:"mar", name:"MAR" },
-    { key:"mer", name:"MER", opt:true },
+    { key:"mer", name:"MER" },
     { key:"jeu", name:"JEU" },
-    { key:"ven", name:"VEN", opt:true },
+    { key:"ven", name:"VEN" },
     { key:"sam", name:"SAM" },
     { key:"dim", name:"DIM" }
   ];
-  var RUN_KEYS = { mar:true, jeu:true, sam:true, dim:true };
+  var TYPE_CHIP = { gym:"Gym", rest:"Repos" };
 
   var TRACKING_START = new Date(2026, 9, 5);
   var TRACKING_END = new Date(2026, 10, 8); // jour J inclus
@@ -1009,6 +937,7 @@
     /^Petit-déj/i,
     /^Sensations\b/i,
     /^Si\b/i,
+    /^Gym\b/i,
     /^Terrain\b/i,
     /^Rien de plus\b/i
   ];
@@ -1111,10 +1040,11 @@
     WEEK_TEMPLATE.forEach(function(day, i){
       var wrap = document.createElement("div");
       var sess = sessions[day.key];
+      var isRun = sess.type === "run";
       var dayState = getDayState(state, day.key);
       var isDone = dayState.done;
       var isOpen = openDayKey === day.key;
-      wrap.className = "day" + (day.opt ? " opt" : "") + (isDone ? " done" : "") + (isOpen ? " open" : "");
+      wrap.className = "day" + (isRun ? "" : " opt") + (isDone ? " done" : "") + (isOpen ? " open" : "");
 
       var head = document.createElement("button");
       head.type = "button";
@@ -1123,7 +1053,7 @@
       head.innerHTML =
         '<span class="day-tag">' + day.name + '</span>' +
         '<span class="day-title">' + sess.title + '</span>' +
-        (day.opt ? '<span class="opt-chip">Option</span>' : '') +
+        (isRun ? '' : '<span class="opt-chip">' + TYPE_CHIP[sess.type] + '</span>') +
         '<span class="state-dot"></span>' +
         '<span class="chevron">→</span>';
 
@@ -1141,7 +1071,7 @@
             '<button type="button" class="done-btn' + (isDone ? ' is-done' : '') + '" data-day="' + day.key + '">' +
               (isDone ? 'Fait <span class="done-check">✓</span>' : "Marquer fait") +
             '</button>' +
-            (day.opt ? '' : '<button type="button" class="strava-btn" data-day="' + day.key + '">Copier pour Strava</button>') +
+            (isRun ? '<button type="button" class="strava-btn" data-day="' + day.key + '">Copier pour Strava</button>' : '') +
           '</div>' +
         '</div>';
       wrap.appendChild(detail);
@@ -1177,11 +1107,11 @@
       listEl.appendChild(wrap);
     });
 
-    updateProgress(state);
+    updateProgress(state, sessions);
   }
 
-  function updateProgress(state){
-    var runs = WEEK_TEMPLATE.filter(function(d){ return RUN_KEYS[d.key]; });
+  function updateProgress(state, sessions){
+    var runs = WEEK_TEMPLATE.filter(function(d){ return sessions[d.key].type === "run"; });
     var done = runs.filter(function(d){ return getDayState(state, d.key).done; }).length;
     var total = runs.length;
     var pct = Math.round((done/total) * 100);
@@ -1198,8 +1128,9 @@
 
     while (cursor <= end){
       var dayKey = WEEKDAY_TO_KEY[cursor.getDay()];
-      if (RUN_KEYS[dayKey]){
-        var mkey = weekStorageKey(mondayOf(cursor));
+      var monday = mondayOf(cursor);
+      if (SESSIONS[weekIndexOf(monday)][dayKey].type === "run"){
+        var mkey = weekStorageKey(monday);
         if (!stateCache[mkey]) stateCache[mkey] = loadWeekState(mkey);
         total++;
         if (getDayState(stateCache[mkey], dayKey).done) done++;
@@ -1267,26 +1198,14 @@
     renderSplits(secPerKm);
   }
 
-  function onPredictInput(){
-    var km = num("pred-km");
-    var t = num("pred-h") * 3600 + num("pred-m") * 60 + num("pred-s");
-    var out = document.getElementById("pred-result");
-    if (km <= 0 || t <= 0){ out.textContent = "Entre une distance et un temps."; return; }
-    var half = t * Math.pow(HALF_KM / km, 1.06);
-    out.innerHTML = "Semi prédit : <b>" + fmtDuration(half) + "</b><br>soit " + fmtPace(half / HALF_KM) +
-      "/km · chrono de référence à " + fmtPace(t / km) + "/km";
-  }
-
   ["pace-min", "pace-sec"].forEach(function(id){ document.getElementById(id).addEventListener("input", onPaceInput); });
   ["time-h", "time-m", "time-s"].forEach(function(id){ document.getElementById(id).addEventListener("input", onTimeInput); });
-  ["pred-km", "pred-h", "pred-m", "pred-s"].forEach(function(id){ document.getElementById(id).addEventListener("input", onPredictInput); });
 
   /* ---------- Init ---------- */
   var blockIdx = renderBlocksAndHero();
   renderWeek();
   updateOverallProgress();
   onPaceInput();
-  onPredictInput();
 
   document.getElementById("reset-week").addEventListener("click", function(){
     var key = weekStorageKey(getViewedMonday());
