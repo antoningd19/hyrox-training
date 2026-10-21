@@ -541,7 +541,7 @@
         <li><span class="n">02</span> <span><b>Classique ou isotonique :</b> le gel classique est concentré, il faut 2-3 gorgées d'eau derrière. L'isotonique est plus liquide et se prend sans eau, mais il est plus gros. Pour commencer, choisis l'isotonique.</span></li>
         <li><span class="n">03</span> <span><b>Caféine :</b> seulement si tu l'as testée à l'entraînement, et plutôt pour le 2e gel.</span></li>
         <li><span class="n">04</span> <span><b>Achat :</b> prends 5-6 gels de la même marque et du même goût dès cette semaine. Le jour J, uniquement des gels déjà testés.</span></li>
-        <li><span class="n">05</span> <span><b>Tests à l'entraînement :</b> dim. 18 oct (1 gel à 40 min), dim. 25 oct (2 gels comme le jour J), ven. 30 oct (1 gel pendant la séance clé). Ils sont notés dans les séances.</span></li>
+        <li><span class="n">05</span> <span><b>Tests à l'entraînement :</b> dim. 25 oct (premier test, 2 gels comme le jour J), ven. 30 oct (1 gel pendant la séance clé). Ils sont notés dans les séances.</span></li>
       </ol>
     </div>
     <div class="card" style="margin-top:10px;">
@@ -797,29 +797,35 @@
         "Retour au calme 10 min.",
         "Objectif : respiration contrôlée, tu dois pouvoir dire quelques mots." ]},
       sam: REST_SAT,
-      dim:{ type:"run", title:"Sortie longue + test gel", duration:"~1h20", steps:[
-        "1h20 en EF à <b>5'15-5'40/km</b> (~15 km).",
-        "Gel <span class=\"overload-tag\">Test</span> : 1 gel à 40 min avec quelques gorgées d'eau, pour vérifier que ça passe bien." ]}
+      dim:{ type:"run", title:"Sortie longue", duration:"~1h20", steps:[
+        "1h20 en EF à <b>5'15-5'40/km</b> (~15 km)." ]}
     },
-    { // Semaine 3 : Développement, pic de volume (19-25 oct)
+    { // Semaine 3 : Développement, pic de volume (19-25 oct). Mar-ven à Paris : course uniquement, pas de gym.
       lun: GYM_MON,
-      mar: easyRunTue(40, 6),
+      mar:{ type:"run", title:"Footing de reprise", duration:"~45 min", steps:[
+        "40 min en endurance fondamentale à <b>5'20-5'40/km</b>.",
+        "6 lignes droites de 20 s, retour en marchant.",
+        "Objectif : reprendre après 9 jours sans courir, en restant facile." ]},
       mer:{ type:"run", title:"Seuil : 4 × 2 km", duration:"~65 min", steps:[
         "Échauffement 20 min EF + 4 lignes droites.",
         "4 × 2 km à <b>4'12-4'18/km</b>, récup 1'30 trot.",
         "Retour au calme 10 min.",
         "Objectif : dur mais contrôlé, jamais à fond." ]},
-      jeu: GYM_THU,
+      jeu:{ type:"run", title:"Footing EF", duration:"~40 min", steps:[
+        "40 min en endurance fondamentale à <b>5'20-5'40/km</b>, à la place de la gym.",
+        "Si les mollets ou les tibias tirent après le seuil d'hier : 30 min au lieu de 40." ]},
       ven:{ type:"run", title:"Allure semi : 3 × 3 km", duration:"~65 min", steps:[
         "Échauffement 15 min EF.",
         "3 × 3 km à <b>4'28/km</b>, récup 2 min trot.",
         "Retour au calme 10 min." ]},
-      sam: REST_SAT,
+      sam:{ type:"rest", title:"Repos complet", duration:"Repos", steps:[
+        "Retour à Bordeaux : repos complet.",
+        "Jambes fraîches pour la sortie longue de demain." ]},
       dim:{ type:"run", title:"Sortie longue spécifique", duration:"~1h40", steps:[
         "10 km en EF à <b>5'15-5'30/km</b>.",
         "2 × 3 km à <b>4'30/km</b>, récup 2 min trot : l'allure semi sur jambes fatiguées.",
         "2 km de retour au calme (~19 km au total).",
-        "Gels <span class=\"overload-tag\">Test jour J</span> : 2 gels comme en course, vers 35 min et vers 1h05." ]}
+        "Gels <span class=\"overload-tag\">1er test</span> : 2 gels comme en course, vers 35 min et vers 1h05. Note comment ton ventre réagit." ]}
     },
     { // Semaine 4 : Spécifique (26 oct - 1er nov)
       lun: GYM_MON,
@@ -944,7 +950,7 @@
   ];
 
   var STRAVA_CUE_WORDS = [
-    "en aisance", "pour vérifier", "pour t'entraîner", "l'allure semi sur", "retour en marchant"
+    "en aisance", "pour t'entraîner", "l'allure semi sur", "retour en marchant", "à la place de", "note comment"
   ];
 
   function stravaFinish(s){
